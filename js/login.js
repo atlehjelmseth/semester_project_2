@@ -24,9 +24,14 @@ async function loginUser(url, userData) {
     const accessToken = json.accessToken;
     const userEmail = json.email;
     const userName = json.name;
+    const avatar = json.avatar;
+    const credits = json.credits;
+    console.log(json)
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('email', userEmail);
     localStorage.setItem('name', userName);
+    localStorage.setItem('avatar', avatar);
+    localStorage.setItem('credits', credits);
   } catch (error) {
     console.log(error);
   } 
