@@ -1,0 +1,23 @@
+$background-color : black;
+$font-color: white;
+$headline-color : red;
+
+body {
+ background-color: $background-color;
+}
+
+h1 {
+    color: $headline-color;
+    text-align: center;
+}
+
+
+p {
+  text-align: center;
+  color: $font-color;
+}
+
+.center {
+  align-items: center;
+  margin: auto;
+}
