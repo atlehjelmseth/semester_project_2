@@ -1,8 +1,6 @@
 const api_base_url = 'https://api.noroff.dev';
 
 
-// email: 'atleSecondTest@noroff.no',
-// password: 'TrustNo1',
 
 const loginUrl = `${api_base_url}/api/v1/auction/auth/login`
 const login = document.getElementById("login");
@@ -11,6 +9,7 @@ const wrong = document.querySelector(".wrongmailorpassword");
 
 
 async function loginUser(url, userData) {
+  wrong.innerHTML = '';
   try {
     const postData = {
       method: 'POST',
@@ -26,12 +25,20 @@ async function loginUser(url, userData) {
     const userName = json.name;
     const avatar = json.avatar;
     const credits = json.credits;
+    const status = response.status;
     console.log(json)
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('email', userEmail);
     localStorage.setItem('name', userName);
     localStorage.setItem('avatar', avatar);
     localStorage.setItem('credits', credits);
+
+    if (status === 200) {
+      console.log("Login success");
+      // location.href = "/main.html";
+    } else {
+      wrong.innerHTML += `<p class="error">Wrong email or password, please try again</p>`;
+    } return false;
   } catch (error) {
     console.log(error);
   } 
@@ -39,32 +46,27 @@ async function loginUser(url, userData) {
 
 // loginUser(loginUrl, userToLogin);
 
-async function getWithToken(url, method = 'GET') {
-  wrong.innerHTML = '';
-  try {
-    const token = localStorage.getItem('accessToken');
-    const fetchOptions = {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-    };
-    const response = await fetch(url, fetchOptions);
+// async function getWithToken(url, method = 'GET') {
 
-    const json = await response.json();
-    console.log(json); 
-    if (response.status === 200) {
-      console.log("Login success");
-    } else {
-      wrong.innerHTML += `<p class="error">Wrong email or password, please try again</p>`;
-    } return false;
-  } catch(error){
-    console.log(error);
-  }
-}
+//   try {
+//     const token = localStorage.getItem('accessToken');
+//     const fetchOptions = {
+//       method,
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${token}`
+//       },
+//     };
+//     const response = await fetch(url, fetchOptions);
 
-const postsUrl = `${api_base_url}/api/v1/social/posts`
+//     const json = await response.json();
+//     console.log(json); 
+
+//   } catch(error){
+//     console.log(error);
+//   }
+// }
+
 
 // getWithToken(postsUrl);
 
@@ -79,10 +81,7 @@ const userToLogin = {
   password: password,
   }
   localStorage.setItem('password', password);
-  loginUser(loginUrl, userToLogin),
-  setTimeout(()=> {
-    getWithToken(postsUrl)
- } ,500);
+  loginUser(loginUrl, userToLogin);
 
 }
 
