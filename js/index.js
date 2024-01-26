@@ -3,8 +3,9 @@ const listingsUrl = `${api_base_url}/api/v1/auction/listings`
 const token = localStorage.getItem('accessToken');
 const userNameProfile = document.querySelector(".username");
 const userNameLocal = localStorage.name; 
-const logoutButton = document.querySelector(".logoutbutton");
+
 const listings = document.querySelector(".listings");
+const loginLogout = document.querySelector(".login_out_button");
 
 console.log(listingsUrl);
 console.log(userNameLocal);
@@ -20,15 +21,17 @@ const userToLogin = {
   function userName () {
     if (localStorage.name === undefined) {
       userNameProfile.innerHTML += `Unknown user`
+      loginLogout.innerHTML+= `<a href="/login.html" class="loginbutton">Log in</a>`
     } else {
       userNameProfile.innerHTML += `${userNameLocal}`
+      loginLogout.insertAdjacentHTML("beforeend", `<a href="" class="logoutbutton">Log out</a>`)
       loadListingsWithToken(listingsUrl)
     }
   }
 
   userName()
 
-
+  const logoutButton = document.querySelector(".logoutbutton");
 logoutButton.onclick = function (ev) {
   localStorage.clear();
 }
