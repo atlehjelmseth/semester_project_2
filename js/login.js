@@ -1,7 +1,4 @@
 const api_base_url = 'https://api.noroff.dev';
-
-
-
 const loginUrl = `${api_base_url}/api/v1/auction/auth/login`
 const login = document.getElementById("login");
 const wrong = document.querySelector(".wrongmailorpassword");
@@ -35,7 +32,7 @@ async function loginUser(url, userData) {
 
     if (status === 200) {
       console.log("Login success");
-      // location.href = "/main.html";
+      location.href = "/index.html";
     } else {
       wrong.innerHTML += `<p class="error">Wrong email or password, please try again</p>`;
     } return false;

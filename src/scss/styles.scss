@@ -2,8 +2,19 @@ $background-color : black;
 $font-color: white;
 $headline-color : red;
 
+
+
 body {
  background-color: $background-color;
+}
+
+img {
+width: 100%;
+}
+
+.post img {
+  max-width: 300px;
+  max-height: 500px;
 }
 
 h1 {
@@ -11,10 +22,8 @@ h1 {
     text-align: center;
 }
 
-
 p {
   text-align: center;
-  color: $font-color;
 }
 
 .center {
