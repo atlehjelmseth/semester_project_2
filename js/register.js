@@ -2,14 +2,9 @@ const api_base_url = 'https://api.noroff.dev';
 const register = document.getElementById("register");
 const registerUrl = `${api_base_url}/api/v1/auction/auth/register`;
 const statusHtml = document.querySelector(".wrongmailorpassword");
-/**
- * Register the user to the API
- * @param {string} url 
- * @param {any} userData 
- * ``` JS
- * registerUser(registerUrl, userToRegister);
- * ```
- */
+
+
+
 async function registerUser(url, userData) {
   statusHtml.innerHTML = '';
   try {

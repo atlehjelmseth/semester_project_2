@@ -1,20 +1,48 @@
-$background-color : black;
-$font-color: white;
+$background-color : white;
+$font-color: black;
 $headline-color : red;
 
 
 
 body {
+ display: flex;
+ flex-direction: column;
+ justify-self: center;
  background-color: $background-color;
+ font-family: "poppins";
+ max-width: 1400px;
+
 }
 
 img {
 width: 100%;
 }
 
+header {
+  max-height: 100px;
+  background-color: whitesmoke;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: black;
+    margin: auto 20px;
+  }
+}
+
+.loginbutton, .logoutbutton {
+  background-color: blue;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+}
+
 .logo {
-  max-width: 300px;
-  max-height: 150px;
+  max-width: 200px;
+  max-height: 80px;
+  margin: 5px;
 }
 
 .post img {

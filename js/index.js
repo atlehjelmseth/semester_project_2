@@ -1,8 +1,10 @@
 const api_base_url = 'https://api.noroff.dev';
-const listingsUrl = `${api_base_url}/api/v1/auction/listings`
+const listingsUrl = `${api_base_url}/api/v1/auction/listings?sort=created&sortOrder=desc&_active=true`
 const token = localStorage.getItem('accessToken');
 const userNameProfile = document.querySelector(".username");
 const userNameLocal = localStorage.name; 
+const profileLink = document.querySelector(".profile_link");
+const createListing = document.querySelector(".create_listing");
 const loginButton = document.querySelector(".loginbutton");
 const logoutButton = document.querySelector(".logoutbutton");
 const listings = document.querySelector(".listings");
@@ -20,11 +22,11 @@ const userToLogin = {
 
 function userName () {
   if (localStorage.name === undefined) {
-    userNameProfile.innerHTML += `Unknown user`,
+    profileLink.style.display = "none";
     logoutButton.style.display = "none";
+    createListing.style.display = "none";
     loadListingsUnregistered(listingsUrl)
   } else {
-    userNameProfile.innerHTML += `${userNameLocal}`
     loadListingsWithToken(listingsUrl)
     loginButton.style.display = "none";
   }
@@ -50,6 +52,10 @@ async function loadListingsWithToken (url) {
       for(let i = 0; i < jsonListings.length; i++) {
         if (i === 10) { break; }
         var description  = jsonListings[i].description;
+        var listingId = jsonListings[i].id;
+
+  
+
         if (jsonListings[i].description === "") {
           var description  = "This listing has no description";
         } else {
@@ -60,8 +66,31 @@ async function loadListingsWithToken (url) {
         } else {
           var picture = jsonListings[i].media[0];
         }
-        listings.insertAdjacentHTML("beforeend", `<div class="post"><img src="${picture}"><p>${description}</p>`);
+        listings.insertAdjacentHTML("beforeend", `<div class="post"><img src="${picture}"><p>${description}</p></div>`);
         
+        const makeBidButton = document.createElement("button");
+        makeBidButton.innerText = `Make bid`;
+        makeBidButton.setAttribute("id", "makebid");
+
+        function makeBid(listingId) {
+          makeBidButton.addEventListener("click", function() {
+            const makeBidConst = {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+              Authorization: `Bearer ${token}`
+            },
+          };
+          fetch(`${listingsUrl}/${listingId}/bids`, makeBidConst)
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+            setTimeout(()=> {
+              location.reload()
+           } ,500);
+          })
+        }
+        makeBid(listingId)
+        listings.appendChild(makeBidButton);
       }
   } catch(error){
   console.log(error);
