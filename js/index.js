@@ -3,9 +3,9 @@ const listingsUrl = `${api_base_url}/api/v1/auction/listings`
 const token = localStorage.getItem('accessToken');
 const userNameProfile = document.querySelector(".username");
 const userNameLocal = localStorage.name; 
-
+const loginButton = document.querySelector(".loginbutton");
+const logoutButton = document.querySelector(".logoutbutton");
 const listings = document.querySelector(".listings");
-const loginLogout = document.querySelector(".login_out_button");
 
 console.log(listingsUrl);
 console.log(userNameLocal);
@@ -18,25 +18,20 @@ const userToLogin = {
 
   console.log(userToLogin, token);
 
-  function userName () {
-    if (localStorage.name === undefined) {
-      userNameProfile.innerHTML += `Unknown user`
-      loginLogout.innerHTML+= `<a href="/login.html" class="loginbutton">Log in</a>`
-    } else {
-      userNameProfile.innerHTML += `${userNameLocal}`
-      loginLogout.insertAdjacentHTML("beforeend", `<a href="" class="logoutbutton">Log out</a>`)
-      loadListingsWithToken(listingsUrl)
-    }
+function userName () {
+  if (localStorage.name === undefined) {
+    userNameProfile.innerHTML += `Unknown user`,
+    logoutButton.style.display = "none";
+    loadListingsUnregistered(listingsUrl)
+  } else {
+    userNameProfile.innerHTML += `${userNameLocal}`
+    loadListingsWithToken(listingsUrl)
+    loginButton.style.display = "none";
   }
-
-  userName()
-
-const logoutButton = document.querySelector(".logoutbutton");
-
-
-logoutButton.onclick = function (ev) {
-  localStorage.clear();
 }
+
+userName()
+
 
 
 async function loadListingsWithToken (url) {
@@ -74,4 +69,45 @@ async function loadListingsWithToken (url) {
 
 }
 
+async function loadListingsUnregistered(url, method = 'GET') {
+  {
+    try {
+      const listingsUnreg = {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const response = await fetch(url, listingsUnreg);
+      const jsonListings = await response.json();
+      console.log(jsonListings)
+  
+        for(let i = 0; i < jsonListings.length; i++) {
+          if (i === 10) { break; }
+          var description  = jsonListings[i].description;
+          if (jsonListings[i].description === "") {
+            var description  = "This listing has no description";
+          } else {
+            var description  = jsonListings[i].description;
+          }
+          if (jsonListings[i].media[0] === undefined) {
+            var picture = "https://gfx.nrk.no/9EoNSgFcMNNAsWwMZ3f2Jw9N-VRC_cvFvbUI0c51Tzpg.jpg";
+          } else {
+            var picture = jsonListings[i].media[0];
+          }
+          listings.insertAdjacentHTML("beforeend", `<div class="post"><img src="${picture}"><p>${description}</p><a href="/login.html">LOG IN TO MAKE A BID</a>`);
+          
+        }
+    } catch(error){
+    console.log(error);
+  }
+}
 
+}
+
+
+
+
+logoutButton.onclick = function (ev) {
+  localStorage.clear();
+}

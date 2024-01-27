@@ -5,10 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEW USER</title>
+  <link rel="stylesheet" href="dist/css/styles.css" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-  <h1>NEW USER</h1>
+  <!-- <div class="d-flex flex-column justify-items-center center">
+    <form class="form justify-items-center">
+      <p>Username: </p>
+      <input id="name" placeholder="Username">
+      <p>Email: </p>
+      <input id="email" placeholder="Email">
+      <p>Passord: </p>
+      <input id="password" placeholder="Password">
+      <p>Choose avatar</p>
+      <input type="file" class="d-flex my-3 mx-auto" accept="image/*"></button>
+      <button id="register" class="d-flex my-2 mx-auto">Register</button>
+    </form>
+  </div> -->
+  <div class="d-flex flex-column justify-items-center center">
+    <form class="form">
+      <p>Username:</p>
+      <input id="username" placeholder="Username">
+      <p>Email:</p>
+      <input id="email" placeholder="Email">
+      <p>Passord:</p>
+      <input id="password" type="password" autocomplete="on" placeholder="Password">
+      <p>Choose avatar</p>
+      <input id="avatar" type="file" class="d-flex my-3" accept="image/*"></button>
+      <button class="d-flex my-2" id="register">Register</button>
+    </form>
+
+    <div class="wrongmailorpassword"></div>
+  </div>
+  <div class="error"></div>
+  <script src="/js/register.js"></script>
 </body>
 
 </html>
