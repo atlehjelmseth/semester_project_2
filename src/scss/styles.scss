@@ -12,6 +12,11 @@ img {
 width: 100%;
 }
 
+.logo {
+  max-width: 300px;
+  max-height: 150px;
+}
+
 .post img {
   max-width: 300px;
   max-height: 500px;
@@ -22,15 +27,6 @@ h1 {
     text-align: center;
 }
 
-
-input {
-  margin: auto!important;
-}
-
-form {
-  justify-content: center!important;
-}
-
 .center {
   align-items: center;
   margin: auto;
@@ -39,3 +35,4 @@ form {
 .error {
   color: red;
 }
+
