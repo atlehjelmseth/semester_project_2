@@ -31,7 +31,9 @@ const userToLogin = {
 
   userName()
 
-  const logoutButton = document.querySelector(".logoutbutton");
+const logoutButton = document.querySelector(".logoutbutton");
+
+
 logoutButton.onclick = function (ev) {
   localStorage.clear();
 }
