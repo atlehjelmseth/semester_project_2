@@ -47,7 +47,7 @@ async function listingSpecs() {
         console.log(currentBid, bidderName);
         listingDetails.innerHTML = "";
 
-        listingDetails.innerHTML += `<button onclick="history.back()"><< Go Back</button> 
+        listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
                                      <div class="spectitle">
                                        <h1>${title}</h1>
                                        <img onerror="this.src='/img/error.png' "src="${picture}">
@@ -61,7 +61,7 @@ async function listingSpecs() {
         let currentBiggestBid = lastElement.amount;
         listingDetails.innerHTML = "";
 
-        listingDetails.innerHTML += `<button onclick="history.back()"><< Go Back</button> 
+        listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
                                      <div class="spectitle">
                                        <h1>${title}</h1>
                                        <img onerror="this.src='/img/error.png' "src="${picture}">

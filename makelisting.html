@@ -8,35 +8,41 @@
   <link rel="stylesheet" href="dist/css/styles.css" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<header class="d-flex align-items-center col-12">
-  <a href="index.html">
-    <img src="/img/logo.png" class="logo" alt="Logo">
-  </a>
-  <div>
-    <a href="/profile.html" class="profile_link">Profile</a>
-    <a href="/makelisting.html" class="create_listing">Create listing</a>
-  </div>
-  <a href="/login.html" class="loginbutton">Log in</a>
-  <a href="/index.html" class="logoutbutton">Log out</a>
-</header>
 
 <body>
-  <div class="d-flex flex-column justify-items-center center">
-    <form class="form">
-      <p>Title:</p>
-      <input id="title" placeholder="Title">
-      <p>Description:</p>
-      <input id="description" placeholder="Description">
-      <p>Avatar(needs to be a link):</p>
-      <input id="media" placeholder="Link to a picture">
-      <p>Deadline Date:</p>
-      <div class="deadlinedate"></div>
-      <button class="d-flex my-2 mx-auto" id="create">Register</button>
-    </form>
+  <header class="d-flex align-items-center col-12">
+    <a href="index.html">
+      <img src="/img/logo.png" class="logo" alt="Logo">
+    </a>
+    <div>
+      <a href="/profile.html" class="profile_link">Profile</a>
+      <a href="/makelisting.html" class="create_listing">Create listing</a>
+    </div>
+    <a href="/login.html" class="loginbutton">Log in</a>
+    <a href="/index.html" class="logoutbutton">Log out</a>
+  </header>
+  <div class="content">
+    <div><button class="goback" onclick="history.back()">
+        << Go Back</button>
+    </div>
+    <div class="d-flex flex-column justify-items-center center">
+      <div class="credit"></div>
+      <form class="form">
+        <p>Title:</p>
+        <input id="title" placeholder="Title">
+        <p>Description:</p>
+        <input id="description" placeholder="Description">
+        <p>Avatar(needs to be a link):</p>
+        <input id="media" placeholder="Link to a picture">
+        <p>Deadline Date:</p>
+        <div class="deadlinedate"></div>
+        <button class="d-flex my-2 mx-auto" id="create">Register</button>
+      </form>
 
-    <div class="wrongmailorpassword"></div>
+      <div class="wrongmailorpassword"></div>
+    </div>
+    <div class="error"></div>
   </div>
-  <div class="error"></div>
   <script src="/js/auth.js"></script>
   <script src="/js/createlisting.js"></script>
 </body>
