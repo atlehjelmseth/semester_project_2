@@ -12,6 +12,9 @@ body {
  background-color: $background-color;
  font-family: "poppins";
  max-width: 1400px;
+  input {
+    width: 100%;
+  }
 
 }
 

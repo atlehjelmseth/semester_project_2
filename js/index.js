@@ -1,7 +1,7 @@
 const api_base_url = 'https://api.noroff.dev';
 const listingsUrl = `${api_base_url}/api/v1/auction/listings`
-const listingsSorted = `${api_base_url}/api/v1/auction/listings?sort=created&sortOrder=desc&_active=true&limit=9&offset=0`;
-const listingsSortedNext = `${api_base_url}/api/v1/auction/listings?sort=created&sortOrder=desc&_active=true&limit=9&offset=`;
+const listingsSorted = `${api_base_url}/api/v1/auction/listings?sort=created&sortOrder=desc&_active=true&limit=6&offset=0`;
+const listingsSortedNext = `${api_base_url}/api/v1/auction/listings?sort=created&sortOrder=desc&_active=true&limit=6&offset=`;
 const loginUrl = `${api_base_url}/api/v1/auction/auth/login`
 const token = localStorage.getItem('accessToken');
 const localName = localStorage.getItem('name');
@@ -27,16 +27,15 @@ const userToLogin = {
 
 function authOrNot () {
   if (localStorage.name === undefined) {
-    localStorage.setItem('viewPage', 9);
     loadListingsUnregistered(listingsSorted)
     viewMore.addEventListener("click", function() {
       let viewPage = parseInt(localStorage.getItem('viewPage'));
-      localStorage.setItem('viewPage', viewPage+9)
+      localStorage.setItem('viewPage', viewPage+6)
       loadListingsUnregistered(listingsSortedNext+viewPage)
     });
     
   } else {
-    localStorage.setItem('viewPage', 9);
+    localStorage.setItem('viewPage', 6);
     loadListingsWithToken(listingsSorted)
     creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${userCredit}</p>`;
     viewMore.addEventListener("click", function() {
