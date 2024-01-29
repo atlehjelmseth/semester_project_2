@@ -1,6 +1,7 @@
 $background-color : white;
 $font-color: black;
 $headline-color : red;
+$link-background-color: blue;
 
 
 
@@ -33,26 +34,80 @@ header {
 }
 
 .loginbutton, .logoutbutton {
-  background-color: blue;
+  background-color: $link-background-color;
+  text-align: center;
   padding: 10px;
   color: white;
   border-radius: 10px;
+  width: 150px;
+}
+
+.view_more_button {
+  display: flex;
+  justify-content: center;
+  background-color: $link-background-color;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  max-width: 125px;
 }
 
 .logo {
-  max-width: 200px;
+  max-width: 150px;
   max-height: 80px;
-  margin: 5px;
+  margin: 20px;
+}
+
+.usercredit {
+  text-align: center;
+}
+
+.listings {
+  display: flex;
+  justify-content: center;
+}
+
+.post {
+  background-color: antiquewhite;
+  margin: 10px;
+  border-radius: 15px;
+  height: 365px;
+  position: relative;
 }
 
 .post img {
-  max-width: 300px;
-  max-height: 500px;
+  overflow: hidden;
+  object-fit: contain;
+  max-height: 165px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.post a {
+  text-align: center;
+  margin: 20px auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.post p {
+  max-height: 30px;
+  overflow: hidden;
+  text-align: center;
 }
 
 h1 {
     color: $headline-color;
     text-align: center;
+}
+
+.currentbid {
+  position: absolute;
+  left: 0%;
+  right: 0;
+  bottom: 60px;
 }
 
 .center {
@@ -61,6 +116,30 @@ h1 {
 }
 
 .error {
-  color: red;
+  color: $headline-color;
 }
 
+.viewmore {
+  display: flex;
+  justify-content: center;
+  background-color: $link-background-color;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  max-width: 125px;
+  margin: 20px auto;
+  border: 0;
+}
+
+.listingdetails {
+  img {max-width: 500px;}
+  margin: auto;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sellerimage {
+  max-width: 100px;
+  border-radius: 20%;
+}

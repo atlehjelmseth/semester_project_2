@@ -4,29 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAIN</title>
+  <title>DETAILS</title>
   <link rel="stylesheet" href="dist/css/styles.css" />
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
   <header class="d-flex align-items-center col-12">
-    <img src="/img/logo.png" class="logo" alt="Logo">
+    <a href="index.html">
+      <img src="/img/logo.png" class="logo" alt="Logo">
+    </a>
     <div>
       <a href="/profile.html" class="profile_link">Profile</a>
       <a href="/makelisting.html" class="create_listing">Create listing</a>
     </div>
     <a href="/login.html" class="loginbutton">Log in</a>
-    <a href="" class="logoutbutton">Log out</a>
+    <a href="/index.html" class="logoutbutton">Log out</a>
   </header>
-  <div class="credit"></div>
-  <div class="login_out_button"></div>
-  <h1 class="username"></h1>
-  <div class="container">
-    <div class="listings row"></div>
+  <div class="details">
+    <div class="listingdetails"></div>
+    <div class="sellerdetails"></div>
+    <a href="" class="makebidbutton">BID 10 MORE!</a>
+    <div class="highestbid"></div>
+    <div class="bidders"></div>
   </div>
-  <button class="viewmore">More listings</button>
-  <script src="/js/index.js"></script>
+  <script src="/js/details.js"></script>
   <script src="/js/auth.js"></script>
 </body>
 
