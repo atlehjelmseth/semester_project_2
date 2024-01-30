@@ -147,7 +147,7 @@ search.onkeyup = async function (event) {
       const searchValue = event.target.value.toLowerCase();
   
       const searchResults = jsonListings.filter(function (search) {
-        if (JSON.stringify(search.title).toLowerCase().includes(searchValue)) {
+        if (JSON.stringify(search.title).toLowerCase().includes(searchValue) || JSON.stringify(search.description).toLowerCase().includes(searchValue)) {
             return true;
         }  
       });
@@ -157,7 +157,24 @@ search.onkeyup = async function (event) {
   
     for(let i = 0; i < searchResults.length; i++){
       if (i === 6) { break; }
-      listings.innerHTML += `<div class="post col-3"><img onerror="this.src='/img/error.png' " src="${searchResults[i].media[0]}"><p>${searchResults[i].title}</p><p>${searchResults[i].description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`
+
+      if (searchResults[i].title === "") {
+        var title  = "No title";
+      } else {
+        var title  = searchResults[i].title;
+      }
+      if (searchResults[i].description === "") {
+        var description  = "No description";
+      } else {
+        var description  = searchResults[i].description;
+      }
+      if (searchResults[i].media[0] === undefined) {
+        var picture = "/img/error.png";
+      } else {
+        var picture = searchResults[i].media[0];
+      }
+
+      listings.innerHTML += `<div class="post col-3"><img onerror="this.src='/img/error.png' " src="${picture}"><p>${title}</p><p>${description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`
     }
 
     }catch{
@@ -189,7 +206,23 @@ search.onkeyup = async function (event) {
   
     for(let i = 0; i < searchResults.length; i++){
       if (i === 6) { break; }
-      listings.innerHTML += `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${searchResults[i].media[0]}"><p>${searchResults[i].title}</p><p>${searchResults[i].description}</p><p class="currentbid">Number of bids: ${searchResults[i]._count.bids}</p><a href="details.html?id=${searchResults[i].id}" class="view_more_button">View More</a></div>`
+
+      if (searchResults[i].title === "") {
+        var title  = "No title";
+      } else {
+        var title  = searchResults[i].title;
+      }
+      if (searchResults[i].description === "") {
+        var description  = "No description";
+      } else {
+        var description  = searchResults[i].description;
+      }
+      if (searchResults[i].media[0] === undefined) {
+        var picture = "/img/error.png";
+      } else {
+        var picture = searchResults[i].media[0];
+      }
+      listings.innerHTML += `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${picture}"><p>${title}</p><p>${description}</p><p class="currentbid">Number of bids: ${searchResults[i]._count.bids}</p><a href="details.html?id=${searchResults[i].id}" class="view_more_button">View More</a></div>`
     }
     console.log(searchValue.length)
   
