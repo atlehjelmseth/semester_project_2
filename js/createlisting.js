@@ -3,7 +3,6 @@ const create = document.getElementById("create");
 const createUrl = `${api_base_url}/api/v1/auction/listings`;
 const statusHtml = document.querySelector(".wrongmailorpassword");
 const deadLineHtml = document.querySelector(".deadlinedate");  
-const creditHtml = document.querySelector('.credit');
 const titleError = document.querySelector("#title_error");
 const descriptionError = document.querySelector("#description_error");
 const mediaError = document.querySelector("#media_error");
@@ -32,13 +31,6 @@ function makeDate() {
 
 makeDate()
 
-function creditStatus () {
-  creditHtml.innerHTML = ""
-  creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${localCredit}</p>`;
-}
-
-creditStatus()
-
 async function createUser(url, userData) {
   statusHtml.innerHTML = '';
   try {
@@ -58,7 +50,8 @@ async function createUser(url, userData) {
         location.href = "/index.html";
      } ,3000);
       console.log("Registration success");
-      statusHtml.innerHTML += `<p class="success">Registration success</p>`;
+      statusHtml.innerHTML += `<p class="success">Registration successful! Updating..</p>`;
+      create.style.display = "none";
     } else {
       console.log("Could not registrate new user");
     } 
@@ -124,14 +117,6 @@ create.onclick = function (ev) {
     console.log("this went to shit")
   }
 }
-
-// function checkLength(value, len) {
-//   if (value.trim().length > len) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
 
 
 function checkLength(value, len) {

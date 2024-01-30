@@ -1,6 +1,5 @@
 const api_base_url = 'https://api.noroff.dev';
 const loginUrl = `${api_base_url}/api/v1/auction/auth/login`;
-const creditHtml = document.querySelector('.credit');
 const profileInfo = document.querySelector(".profileinfo");
 const statusUpdate = document.querySelector(".status");
 const update = document.getElementById("update")
@@ -13,13 +12,6 @@ const userPassword = localStorage.getItem('password');
 const avatarUrl = `${api_base_url}/api/v1/auction/profiles/${localName}/media`;
 
 console.log(userEmail, userPassword);
-
-function creditStatus () {
-  creditHtml.innerHTML = ""
-  creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${localCredit}</p>`;
-}
-
-creditStatus()
 
 
 async function loginUser(url) {

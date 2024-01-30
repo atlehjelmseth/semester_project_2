@@ -7,17 +7,12 @@ const highestBid = document.querySelector(".highestbid");
 const bidders = document.querySelector(".bidders");
 const bidStatus = document.querySelector(".bidstatus");
 const makeBidButton = document.querySelector(".makebidbutton");
-const creditHtml = document.querySelector('.credit');
 const yourOwnListing = document.querySelector(".yourownlisting");
 const errorMessage = document.querySelector(".error");
-const emailUpdate = localStorage.getItem('email');
+const localEmail = localStorage.getItem('email');
 const localName = localStorage.getItem('name');
 const localCredit = localStorage.getItem('credits')
 const token = localStorage.getItem('accessToken');
-const passwordUpdate = localStorage.getItem("password");
-const userCredit = localStorage.getItem('credits');
-const localNameCredit = localStorage.getItem('name');
-const creditUrl = `https://api.noroff.dev/api/v1/auction/auth/login`
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
@@ -26,31 +21,6 @@ const id = params.get("id");
 
 const specs = listingsUrl + "/" + id + "?_seller=true&_bids=true";
 const listingsBid = listingsUrl + "/" + id + "/bids"
-
-async function creditUser(url) {
-  try {
-    const postData = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: emailUpdate,
-        password: passwordUpdate,
-      }),
-    };
-    const response = await fetch(url, postData);
-    const json = await response.json();
-    console.log(json)
-    const credits = json.credits;
-    localStorage.setItem('credits', credits);
-
-  } catch (error) {
-    console.log(error);
-  } 
-}
-
-creditUser(creditUrl)
 
 
 async function listingSpecs() {
@@ -69,9 +39,8 @@ async function listingSpecs() {
         let bidderName = "no one";
 
         console.log(currentBid, bidderName);
-        creditHtml.innerHTML = ""
-        creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${localCredit}</p>`;
         listingDetails.innerHTML = "";
+
         listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
                                      <div class="spectitle">
                                        <h1>Title: ${title}</h1>
@@ -84,13 +53,12 @@ async function listingSpecs() {
         `;
         yourOwnListing.innerHTML = "";
         yourOwnListing.innerHTML += `<p>There are no current bids. Be the first!</p>`;
-
+        
        } else {
         let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
         let currentBiggestBid = lastElement.amount;
-        creditHtml.innerHTML = ""
-        creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${localCredit}</p>`;
         listingDetails.innerHTML = "";
+
         listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
                                      <div class="spectitle">
                                        <h1>Title: ${title}</h1>
@@ -103,7 +71,7 @@ async function listingSpecs() {
                                        </div>
  
         `;
-
+        
         for(let i = 0; i < resultsSpec.bids.length; i++) {
           console.log(resultsSpec.bids[i].amount)
           let lastElementBidder = resultsSpec.bids[resultsSpec.bids.length - 1];
@@ -197,6 +165,8 @@ function makeBid(listingsBid) {
             .then((response) => response.json())
             .then((json) => console.log(json));
             let emailUpdate = localStorage.getItem("email");
+            let passwordUpdate = localStorage.getItem("password");
+            console.log(emailUpdate, passwordUpdate);
       
             fetch(loginUrl, {
               method: 'POST',
@@ -238,6 +208,8 @@ function makeBid(listingsBid) {
             fetch(`${listingsBid}`, makeBidConst)
             .then((response) => response.json())
             .then((json) => console.log(json));
+            let emailUpdate = localStorage.getItem("email");
+            let passwordUpdate = localStorage.getItem("password");
             console.log(emailUpdate, passwordUpdate);
       
             fetch(loginUrl, {
