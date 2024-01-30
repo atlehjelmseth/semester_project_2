@@ -41,31 +41,7 @@ async function loginUser(url, userData) {
   } 
 }
 
-// loginUser(loginUrl, userToLogin);
 
-// async function getWithToken(url, method = 'GET') {
-
-//   try {
-//     const token = localStorage.getItem('accessToken');
-//     const fetchOptions = {
-//       method,
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: `Bearer ${token}`
-//       },
-//     };
-//     const response = await fetch(url, fetchOptions);
-
-//     const json = await response.json();
-//     console.log(json); 
-
-//   } catch(error){
-//     console.log(error);
-//   }
-// }
-
-
-// getWithToken(postsUrl);
 
 login.onclick = function (ev) {
   ev.preventDefault()

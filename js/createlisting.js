@@ -3,6 +3,12 @@ const create = document.getElementById("create");
 const createUrl = `${api_base_url}/api/v1/auction/listings`;
 const statusHtml = document.querySelector(".wrongmailorpassword");
 const deadLineHtml = document.querySelector(".deadlinedate");  
+const creditHtml = document.querySelector('.credit');
+const titleError = document.querySelector("#title_error");
+const descriptionError = document.querySelector("#description_error");
+const mediaError = document.querySelector("#media_error");
+const localName = localStorage.getItem('name');
+const localCredit = localStorage.getItem('credits')
 const token = localStorage.getItem('accessToken');
 
 var today = new Date();
@@ -26,6 +32,13 @@ function makeDate() {
 
 makeDate()
 
+function creditStatus () {
+  creditHtml.innerHTML = ""
+  creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${localCredit}</p>`;
+}
+
+creditStatus()
+
 async function createUser(url, userData) {
   statusHtml.innerHTML = '';
   try {
@@ -41,9 +54,9 @@ async function createUser(url, userData) {
     const json = await response.json();
     console.log(json);
     if (response.status === 201) {
-    //   setTimeout(()=> {
-    //     location.href = "/index.html";
-    //  } ,3000);
+      setTimeout(()=> {
+        location.href = "/index.html";
+     } ,3000);
       console.log("Registration success");
       statusHtml.innerHTML += `<p class="success">Registration success</p>`;
     } else {
@@ -63,22 +76,68 @@ async function createUser(url, userData) {
 
 }
 
+
+
+
+
 create.onclick = function (ev) {
   ev.preventDefault()
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
   let media = document.getElementById("media").value;
   let dateEnd = document.getElementById("dateEnd").value + "T00:00:00.000Z";
-  console.log(dateEnd);
+  console.log(title);
+  console.log(description);
   console.log(media);
 
-const listingToCreate = {
-  title: title, 
-  description: description,
-  media: [media],
-  endsAt: dateEnd,
+  const listingToCreate = {
+    title: title, 
+    description: description,
+    media: [media],
+    endsAt: dateEnd,
   }
-  createUser(createUrl, listingToCreate)
+
+  if(checkLength(title, 0) === true) {
+    titleError.style.display = "none";
+  } else {
+    titleError.style.display = "block";
+  }
+
+  if(checkLength(description, 0) === true) {
+    descriptionError.style.display = "none";
+  } else {
+    descriptionError.style.display = "block";
+  }
+
+
+  if(checkLength(media, 0) === true) {
+    mediaError.style.display = "none";
+  } else {
+    mediaError.style.display = "block";
+  }
+
+
+  if(checkLength(title, 1) === true && checkLength(description, 1) && checkLength(media, 1)) {
+    createUser(createUrl, listingToCreate)
+    
+  } else {
+    console.log("this went to shit")
+  }
 }
 
+// function checkLength(value, len) {
+//   if (value.trim().length > len) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
+
+function checkLength(value, len) {
+  if (value.trim().length > len) {
+    return true;
+  } else {
+    return false;
+  }
+}

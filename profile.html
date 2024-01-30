@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="dist/css/styles.css" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <header class="d-flex align-items-center col-12">
+    <a href="index.html">
+      <img src="/img/logo.png" class="logo" alt="Logo">
+    </a>
+    <div>
+      <a href="/profile.html" class="profile_link">Profile</a>
+      <a href="/makelisting.html" class="create_listing">Create listing</a>
+    </div>
+    <a href="/login.html" id="standardbutton" class="loginbutton">Log in</a>
+    <a href="/index.html" id="standardbutton" class="logoutbutton">Log out</a>
+  </header>
+  <div class="content">
+    <div class="credit"></div>
+    <div><button class="goback" onclick="history.back()">
+        << Go Back</button>
+    </div>
+    <div class="d-flex flex-column justify-items-center center">
+      <div class="profileinfo">
+      </div>
+      <form class="form">
+        <p>Avatar (this must be a link to a picture):</p>
+        <input id="media" placeholder="Update avatar picture">
+        <button class="d-flex my-2 mx-auto" id="update">Update</button>
+      </form>
+      <div class="status"></div>
+    </div>
+  </div>
+  <script src="/js/auth.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+
+</html>

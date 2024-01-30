@@ -9,6 +9,7 @@ const bidStatus = document.querySelector(".bidstatus");
 const makeBidButton = document.querySelector(".makebidbutton");
 const creditHtml = document.querySelector('.credit');
 const yourOwnListing = document.querySelector(".yourownlisting");
+const errorMessage = document.querySelector(".error");
 const localEmail = localStorage.getItem('email');
 const localName = localStorage.getItem('name');
 const localCredit = localStorage.getItem('credits')
@@ -49,9 +50,13 @@ async function listingSpecs() {
 
         listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
                                      <div class="spectitle">
-                                       <h1>${title}</h1>
+                                       <h1>Title: ${title}</h1>
+                                       <div class="picture_and_specs">
                                        <img onerror="this.src='/img/error.png' "src="${picture}">
+                                       <div>
                                        <p>${description}</p>
+                                       </div>
+                                       </div>
         `;
         yourOwnListing.innerHTML = "";
         yourOwnListing.innerHTML += `<p>There are no current bids. Be the first!</p>`;
@@ -63,10 +68,14 @@ async function listingSpecs() {
 
         listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
                                      <div class="spectitle">
-                                       <h1>${title}</h1>
+                                       <h1>Title: ${title}</h1>
+                                       <div class="picture_and_specs">
                                        <img onerror="this.src='/img/error.png' "src="${picture}">
+                                       <div>
                                        <p>${description}</p>
                                        <p>Current bid for this item is ${currentBiggestBid}</p>
+                                       </div>
+                                       </div>
  
         `;
         
@@ -133,7 +142,7 @@ function makeBid(listingsBid) {
     ev.preventDefault();
     gettingBid()
 
-
+    
 
     async function gettingBid() {
       try {const response = await fetch(specs);
@@ -141,6 +150,13 @@ function makeBid(listingsBid) {
            console.log(resultsSpec);
 
            if (resultsSpec._count.bids === 0) {
+            
+
+            if (localCredit < 10) {
+              alert ("Not enough credit");
+              } else {
+                console.log("success");
+               }
             const makeBidConst = {
               method: 'POST',
               body: JSON.stringify({
@@ -154,6 +170,7 @@ function makeBid(listingsBid) {
             };
             fetch(`${listingsBid}`, makeBidConst)
             .then((response) => response.json())
+            .then((json) => console.log(json));
             let emailUpdate = localStorage.getItem("email");
             let passwordUpdate = localStorage.getItem("password");
             console.log(emailUpdate, passwordUpdate);
@@ -176,6 +193,13 @@ function makeBid(listingsBid) {
           } else {
             let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
             let currentBiggestBid = lastElement.amount+10;
+            console.log(currentBiggestBid)
+            if (localCredit < currentBiggestBid) {
+              console.log("Not enough credit");
+              alert ("Not enough credit");
+              } else { 
+                console.log("success");
+               }
 
             const makeBidConst = {
               method: 'POST',
@@ -190,6 +214,7 @@ function makeBid(listingsBid) {
             };
             fetch(`${listingsBid}`, makeBidConst)
             .then((response) => response.json())
+            .then((json) => console.log(json));
             let emailUpdate = localStorage.getItem("email");
             let passwordUpdate = localStorage.getItem("password");
             console.log(emailUpdate, passwordUpdate);

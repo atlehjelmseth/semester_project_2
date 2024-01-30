@@ -2,8 +2,7 @@ $background-color : #f7f7f7;
 $font-color: black;
 $headline-color : red;
 $link-background-color: blue;
-
-
+$success-color: green;
 
 body {
  display: flex;
@@ -13,12 +12,14 @@ body {
  font-family: "poppins";
  max-width: 1400px;
  margin: auto!important;
+ min-height: calc(100vh - 80px);
   input {
     width: 100%;
   }
   .content {
     background-color: $background-color;
     margin-top: 80px!important;
+    min-height: calc(100vh - 80px);
   }
 
 }
@@ -45,12 +46,51 @@ header {
     font-weight: bold;
     font-size: 0.8em;
     color: black;
-    margin: auto 20px;
+    margin: auto 20px
   }
 }
 
-.loginbutton, .logoutbutton, .goback {
+.search {
+  min-height: 30px;
+
+  width: 100%;
+  max-width: 1400px;
+  z-index: 1;
+  backdrop-filter: blur(15px);
+  
+}
+
+#searchbar {
+  max-width: 200px; 
+  display: flex;
+  margin: 20px auto;
+}
+
+form input, #description {
+  min-width: 340px;
+  border-radius: 10px;
+  border: 0;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+form p {
+  text-align: center;
+}
+
+::placeholder {
+  margin-right: 20px;
+}
+
+#description {
+  min-height: 200px;
+
+}
+
+#standardbutton, .goback {
   background-color: $link-background-color;
+  font-size: 0.8em;
   font-family: "poppins";
   text-align: center;
   padding: 10px;
@@ -58,6 +98,11 @@ header {
   border-radius: 10px;
   width: 150px;
   border: 0;
+}
+
+#standardbutton:hover, .goback:hover, .view_more_button:hover, .viewmore:hover {
+  background-color: $background-color;
+  color: $font-color;
 }
 
 .goback {
@@ -82,6 +127,7 @@ header {
 
 .usercredit {
   text-align: center;
+  padding-top: 30px;
 }
 
 .listings {
@@ -149,6 +195,7 @@ h1 {
 
 .viewmore {
   display: flex;
+  font-size: 0.8em;
   justify-content: center;
   background-color: $link-background-color;
   padding: 10px;
@@ -170,4 +217,20 @@ h1 {
 .sellerimage {
   max-width: 100px;
   border-radius: 20%;
+}
+
+.picture_and_specs {
+  display: flex;
+}
+
+.success {
+  color: $success-color;
+}
+
+.failure {
+  color: $headline-color;
+} 
+
+#title_error, #description_error, #media_error {
+  display: none;
 }

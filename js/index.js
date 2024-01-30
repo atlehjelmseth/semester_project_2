@@ -81,60 +81,7 @@ async function loadListingsWithToken (url) {
         } else {
           var picture = jsonListings[i].media[0];
         }
-        listings.insertAdjacentHTML("beforeend", `<div class="post col-3"><img onerror="this.src='/img/error.png' "src="${picture}"><p>${listigTitle}</p><p>${description}</p><p class="currentbid">Number of bids: ${currentBidButton}</p><a href="details.html?id=${listingId}" class="view_more_button">View More</a></div>`);
-/* Make bids */
-
-        // function makeBid(listingId) {
-        //   makeBidButton.addEventListener("click", function(event) {
-        //     event.preventDefault();
-        //     var currentBid = jsonListings[i]._count.bids+1;
-        //     console.log(currentBid)
-            
-        //       const makeBidConst = {
-        //         method: 'POST',
-        //         body: JSON.stringify({
-        //           "amount": 17
-        //         }),
-        //         headers: {
-        //         'Content-Type': 'application/json',
-        //         Authorization: `Bearer ${token}`,
-        //         },
-            
-        //   };
-        //     fetch(`${listingsUrl}/${listingId}/bids`, makeBidConst)
-        //     .then((response) => response.json())
-        //     .then((json) => console.log(json));
-            // let emailUpdate = localStorage.getItem("email");
-            // let passwordUpdate = localStorage.getItem("password");
-            // console.log(emailUpdate, passwordUpdate);
-            // fetch(loginUrl, {
-            //   method: 'POST',
-            //   body: JSON.stringify({
-            //     email: emailUpdate,
-            //     password: passwordUpdate,
-            //   }),
-            //   headers: {
-            //     'Content-type': 'application/json; charset=UTF-8',
-            //   },
-            // })
-            //   .then((response) => response.json())
-            //   .then((json) => localStorage.setItem('credits', json.credits));
-          //   setTimeout(()=> {
-          //     location.reload()
-          //  } ,500);
-        //   })
-        // // }
-        // makeBid(listingId)
-        // listings.appendChild(makeBidButton);
-
-        // function makeBid(listingId) {
-        //   makeBidButton.addEventListener("click", function(event) {
-        //     event.preventDefault();
-        //     var currentBid = jsonListings[i]._count.bids;
-        //     console.log(currentBid, listingId)
-            
-        //   })
-        // }
+        listings.insertAdjacentHTML("beforeend", `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${picture}"><p>${listigTitle}</p><p>${description}</p><p class="currentbid">Number of bids: ${currentBidButton}</p><a href="details.html?id=${listingId}" class="view_more_button">View More</a></div>`);
       }
 
   } catch(error){
