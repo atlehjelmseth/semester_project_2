@@ -19,6 +19,7 @@ body .content {
 
 img {
   width: 100%;
+  border-radius: 15px;
 }
 
 header {
@@ -56,7 +57,24 @@ header a {
   margin: 20px auto;
 }
 
-form input, #description {
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form p {
+  text-align: center;
+}
+form .failure {
+  text-align: center;
+}
+form ::placeholder {
+  margin-right: 20px;
+}
+form button text {
+  margin: auto;
+}
+form input {
   min-width: 340px;
   border-radius: 10px;
   border: 0;
@@ -65,15 +83,13 @@ form input, #description {
   padding: 10px;
 }
 
-form p {
-  text-align: center;
-}
-
-::placeholder {
-  margin-right: 20px;
-}
-
 #description {
+  min-width: 340px;
+  border-radius: 10px;
+  border: 0;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  padding: 10px;
   min-height: 200px;
 }
 

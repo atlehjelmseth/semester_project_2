@@ -26,6 +26,7 @@ body {
 
 img {
 width: 100%;
+border-radius: 15px;
 }
 
 
@@ -66,26 +67,41 @@ header {
   margin: 20px auto;
 }
 
-form input, #description {
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    text-align: center;
+  }
+  .failure {
+
+    text-align: center;
+  }
+  ::placeholder {
+    margin-right: 20px;
+  }
+  button text{
+    margin: auto;
+  }
+  input {
+    min-width: 340px;
+    border-radius: 10px;
+    border: 0;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+  }
+}
+
+#description {
   min-width: 340px;
   border-radius: 10px;
   border: 0;
   margin-bottom: 30px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
   padding: 10px;
-}
-
-form p {
-  text-align: center;
-}
-
-::placeholder {
-  margin-right: 20px;
-}
-
-#description {
   min-height: 200px;
-
 }
 
 #standardbutton, .goback {
