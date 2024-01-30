@@ -7,7 +7,6 @@ const highestBid = document.querySelector(".highestbid");
 const bidders = document.querySelector(".bidders");
 const bidStatus = document.querySelector(".bidstatus");
 const makeBidButton = document.querySelector(".makebidbutton");
-const creditHtml = document.querySelector('.credit');
 const yourOwnListing = document.querySelector(".yourownlisting");
 const errorMessage = document.querySelector(".error");
 const localEmail = localStorage.getItem('email');
@@ -18,17 +17,11 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
+import {creditUser} from './updatecredit'
 
 
 const specs = listingsUrl + "/" + id + "?_seller=true&_bids=true";
 const listingsBid = listingsUrl + "/" + id + "/bids"
-
-function creditStatus () {
-  creditHtml.innerHTML = ""
-  creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${localCredit}</p>`;
-}
-
-creditStatus()
 
 async function listingSpecs() {
   try {const response = await fetch(specs);
@@ -186,10 +179,10 @@ function makeBid(listingsBid) {
               },
             })
               .then((response) => response.json())
-              .then((json) => localStorage.setItem('credits', json.credits));
+              .then((json) => console.log(json));
               setTimeout(()=> {
               location.reload()
-              } ,500);
+              } ,1000);
           } else {
             let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
             let currentBiggestBid = lastElement.amount+10;
@@ -230,10 +223,10 @@ function makeBid(listingsBid) {
               },
             })
               .then((response) => response.json())
-              .then((json) => localStorage.setItem('credits', json.credits));
+              .then((json) => console.log(json));
               setTimeout(()=> {
               location.reload()
-              } ,500);
+              } ,1000);
 
           }   
       }catch(error) {

@@ -5,20 +5,12 @@ const listingsSortedNext = `${api_base_url}/api/v1/auction/listings?sort=created
 const loginUrl = `${api_base_url}/api/v1/auction/auth/login`
 const searchUrl = `${api_base_url}/api/v1/auction/listings?sort=created&sortOrder=desc&_active=true`
 const token = localStorage.getItem('accessToken');
-const localName = localStorage.getItem('name');
 const userNameProfile = document.querySelector(".username");
-const userCredit = localStorage.getItem('credits');
-const creditHtml = document.querySelector('.credit');
 const profileLink = document.querySelector(".profile_link");
 const createListing = document.querySelector(".create_listing");
 const listings = document.querySelector(".listings");
 const viewMore = document.querySelector(".viewmore");
 const search = document.querySelector(".search");
-
-console.log(listingsSorted);
-console.log(userCredit);
-
-
 
 const userToLogin = {
   email: localStorage.getItem('email'),
@@ -33,7 +25,6 @@ function authOrNot () {
   } else {
     localStorage.setItem('viewPage', 6);
     loadListingsWithToken(listingsSorted)
-    creditHtml.innerHTML += `<p class="usercredit">Hi, ${localName}. Your credit is: ${userCredit}</p>`;
     viewMore.addEventListener("click", function() {
       let viewPage = parseInt(localStorage.getItem('viewPage'));
       localStorage.setItem('viewPage', viewPage+9)

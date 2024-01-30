@@ -21,7 +21,8 @@ async function registerUser(url, userData) {
         location.href = "/login.html";
      } ,3000);
       console.log("Registration success");
-      statusHtml.innerHTML += `<p class="success">Registration success</p>`;
+      statusHtml.innerHTML += `<p class="success">Registration successful! Redirecting..</p>`;
+      register.style.display = "none";
     } else {
       console.log("Could not registrate new user");
     } 
