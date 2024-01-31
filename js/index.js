@@ -6,8 +6,6 @@ const loginUrl = `${api_base_url}/api/v1/auction/auth/login`
 const searchUrl = `${api_base_url}/api/v1/auction/listings?sort=created&sortOrder=desc&_active=true`
 const token = localStorage.getItem('accessToken');
 const userNameProfile = document.querySelector(".username");
-const profileLink = document.querySelector(".profile_link");
-const createListing = document.querySelector(".create_listing");
 const listings = document.querySelector(".listings");
 const viewMore = document.querySelector(".viewmore");
 const search = document.querySelector(".search");

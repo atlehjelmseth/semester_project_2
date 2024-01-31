@@ -1,6 +1,8 @@
 const loginButton = document.querySelector(".loginbutton");
 const logoutButton = document.querySelector(".logoutbutton");
 const viewMoreHidden = document.querySelector(".viewmore");
+const profileLink = document.querySelector(".profile_link");
+const createListing = document.querySelector(".create_listing");
 
 function userName () {
   if (localStorage.name === undefined) {
