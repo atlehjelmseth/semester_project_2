@@ -125,14 +125,14 @@ form input {
   display: flex;
   justify-content: center;
   background-color: green;
-  font-size: 1.2em;
+  font-size: 1.8em;
   font-weight: bolder;
   text-decoration: none;
   padding: 20px;
   color: white;
   border-radius: 10px;
   max-width: 255px;
-  margin: 20px auto;
+  margin: 0px auto 20px auto;
   border: solid 4px transparent;
 }
 
@@ -140,6 +140,18 @@ form input {
   background-color: #f7f7f7;
   color: black;
   border: solid 4px;
+}
+
+.bidstatus {
+  margin-top: 30px;
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+.bidnumber {
+  font-size: 1.5em;
+  font-weight: bolder;
+  text-decoration: underline;
 }
 
 .successbig {
@@ -244,6 +256,7 @@ h1 {
 
 .error {
   color: red;
+  font-size: 1.2rem;
 }
 
 .viewmore {
@@ -266,6 +279,7 @@ h1 {
   position: relative;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(15px);
+  max-width: 600px;
 }
 .listingdetails p {
   padding: 10px;

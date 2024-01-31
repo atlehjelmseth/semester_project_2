@@ -9,7 +9,8 @@ const bidStatus = document.querySelector(".bidstatus");
 const makeBidButton = document.querySelector(".makebidbutton");
 const yourOwnListing = document.querySelector(".yourownlisting");
 const statusMessage = document.querySelector(".error");
-const totalBid = document.querySelector("totalbid");
+const totalBid = document.querySelector(".totalbid");
+const biddingHistory = document.querySelector(".biddinghistory");
 const localEmail = localStorage.getItem('email');
 const localName = localStorage.getItem('name');
 const localCredit = localStorage.getItem('credits')
@@ -17,11 +18,10 @@ const token = localStorage.getItem('accessToken');
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-
-
-
 const specs = listingsUrl + "/" + id + "?_seller=true&_bids=true";
 const listingsBid = listingsUrl + "/" + id + "/bids"
+
+
 
 async function listingSpecs() {
   try {const response = await fetch(specs);
@@ -37,7 +37,8 @@ async function listingSpecs() {
        if (resultsSpec._count.bids === 0) {
         let currentBid = 0;
         let bidderName = "no one";
-
+        var t = document.createTextNode("BID 10");
+        makeBidButton.appendChild(t);
         console.log(currentBid, bidderName);
         listingDetails.innerHTML = "";
 
@@ -53,35 +54,36 @@ async function listingSpecs() {
         `;
         yourOwnListing.innerHTML = "";
         yourOwnListing.innerHTML += `<p>There are no current bids. Be the first!</p>`;
-        
+        biddingHistory.innerHTML = "";
        } else {
         let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
         let currentBiggestBid = lastElement.amount;
         let currestBiggestName = lastElement.bidderName;
+        var t = document.createTextNode(`BID ${currentBiggestBid+10}`);
+        makeBidButton.appendChild(t);
         listingDetails.innerHTML = "";
         listingDetails.innerHTML += `<div class="spectitle">
                                        <div class="picture_and_specs">
                                         <img onerror="this.src='/img/error.png' "src="${picture}">
-                                        <h1>Title: ${title}</h1>
+                                        <p class "title">Title: ${title}</p>
                                         </div>
                                         <div>
-                                          <p>${description}</p>
-                                          <p>Current largest bid for this item is ${currentBiggestBid}</p>
-                                          <p>Bid-leader is: ${currestBiggestName}</p>
+                                          <p class="description">Description: ${description}</p>
+                                          <p>Bid-leader is ${currestBiggestName} with a bid of ${currentBiggestBid}</p>
                                         </div>
                                       </div>
  
         `;
-
+        bidStatus.innerHTML = `<p>${currestBiggestName}'s bid for this item is:</p> <p class="bidnumber">${currentBiggestBid}</p>`;
         for(let i = 0; i < resultsSpec.bids.length; i++) {
           console.log(resultsSpec.bids[i].amount)
           let lastElementBidder = resultsSpec.bids[resultsSpec.bids.length - 1];
           let currentBiggestBidBidder = lastElementBidder.bidderName;
           let currentBid = resultsSpec.bids[i].amount;
           let bidderName = resultsSpec.bids[i].bidderName;
-
+          let bidDate = resultsSpec.bids[i].created.slice(0, 10);
           bidders.innerHTML += `
-          <p>${bidderName} made a bid of: ${currentBid}</p>
+          <p>${bidDate}: ${bidderName} made a bid of: ${currentBid}</p>
           `
 
           if (currentBiggestBidBidder === localName) {
@@ -106,8 +108,8 @@ async function listingSpecs() {
       }else {
         console.log(`This is your own listing`)
         listingSeller.innerHTML = "";
-
-        listingSeller.innerHTML += `<p>This is your own listing, and you can not bid on it!</p>`
+        biddingHistory.innerHTML = "";
+        listingSeller.innerHTML += `<p class="error">This is your own listing, and you can not bid on it!</p>`
         makeBidButton.style.display = "none";
         yourOwnListing.style.display = "none";
 
@@ -181,9 +183,9 @@ function makeBid(listingsBid) {
               statusMessage.innerHTML = '<p class="successbig">Bid successful! Updating..</p>';
               makeBidButton.style.display = "none";
               yourOwnListing.style.display = "none";
-              // setTimeout(()=> {
-              // location.reload()
-              // } ,500);
+              setTimeout(()=> {
+              location.reload()
+              } ,500);
           } else {
             let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
             let currentBiggestBid = lastElement.amount+10;
