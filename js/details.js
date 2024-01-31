@@ -8,7 +8,8 @@ const bidders = document.querySelector(".bidders");
 const bidStatus = document.querySelector(".bidstatus");
 const makeBidButton = document.querySelector(".makebidbutton");
 const yourOwnListing = document.querySelector(".yourownlisting");
-const errorMessage = document.querySelector(".error");
+const statusMessage = document.querySelector(".error");
+const totalBid = document.querySelector("totalbid");
 const localEmail = localStorage.getItem('email');
 const localName = localStorage.getItem('name');
 const localCredit = localStorage.getItem('credits')
@@ -21,7 +22,6 @@ const id = params.get("id");
 
 const specs = listingsUrl + "/" + id + "?_seller=true&_bids=true";
 const listingsBid = listingsUrl + "/" + id + "/bids"
-
 
 async function listingSpecs() {
   try {const response = await fetch(specs);
@@ -41,15 +41,15 @@ async function listingSpecs() {
         console.log(currentBid, bidderName);
         listingDetails.innerHTML = "";
 
-        listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
-                                     <div class="spectitle">
-                                       <h1>Title: ${title}</h1>
+        listingDetails.innerHTML += `<div class="spectitle">
                                        <div class="picture_and_specs">
-                                       <img onerror="this.src='/img/error.png' "src="${picture}">
+                                        <img onerror="this.src='/img/error.png' "src="${picture}">
+                                        <h1>Title: ${title}</h1>
+                                      </div>
                                        <div>
-                                       <p>${description}</p>
+                                        <p>${description}</p>
                                        </div>
-                                       </div>
+                                    </div>
         `;
         yourOwnListing.innerHTML = "";
         yourOwnListing.innerHTML += `<p>There are no current bids. Be the first!</p>`;
@@ -57,21 +57,22 @@ async function listingSpecs() {
        } else {
         let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
         let currentBiggestBid = lastElement.amount;
+        let currestBiggestName = lastElement.bidderName;
         listingDetails.innerHTML = "";
-
-        listingDetails.innerHTML += `<button class="goback" onclick="history.back()"><< Go Back</button> 
-                                     <div class="spectitle">
-                                       <h1>Title: ${title}</h1>
+        listingDetails.innerHTML += `<div class="spectitle">
                                        <div class="picture_and_specs">
-                                       <img onerror="this.src='/img/error.png' "src="${picture}">
-                                       <div>
-                                       <p>${description}</p>
-                                       <p>Current bid for this item is ${currentBiggestBid}</p>
-                                       </div>
-                                       </div>
+                                        <img onerror="this.src='/img/error.png' "src="${picture}">
+                                        <h1>Title: ${title}</h1>
+                                        </div>
+                                        <div>
+                                          <p>${description}</p>
+                                          <p>Current largest bid for this item is ${currentBiggestBid}</p>
+                                          <p>Bid-leader is: ${currestBiggestName}</p>
+                                        </div>
+                                      </div>
  
         `;
-        
+
         for(let i = 0; i < resultsSpec.bids.length; i++) {
           console.log(resultsSpec.bids[i].amount)
           let lastElementBidder = resultsSpec.bids[resultsSpec.bids.length - 1];
@@ -86,15 +87,12 @@ async function listingSpecs() {
           if (currentBiggestBidBidder === localName) {
             makeBidButton.style.display = "none"
             console.log("you have the largest bid");
-            bidStatus.innerHTML = `<p class="youhavelargestbid">You have the largest bid</p>`
+            bidStatus.innerHTML = `<p class="successbig">Happy days! You have the largest bid!</p>`
           }else {
             console.log("bid away")
           }
-
         }
-
        }
-
 
       if (sellerEmail !== localEmail) {
         console.log(`Seller is ${sellerName}`)
@@ -180,9 +178,12 @@ function makeBid(listingsBid) {
             })
               .then((response) => response.json())
               .then((json) => console.log(json));
-              setTimeout(()=> {
-              location.reload()
-              } ,500);
+              statusMessage.innerHTML = '<p class="successbig">Bid successful! Updating..</p>';
+              makeBidButton.style.display = "none";
+              yourOwnListing.style.display = "none";
+              // setTimeout(()=> {
+              // location.reload()
+              // } ,500);
           } else {
             let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
             let currentBiggestBid = lastElement.amount+10;
@@ -208,6 +209,9 @@ function makeBid(listingsBid) {
             fetch(`${listingsBid}`, makeBidConst)
             .then((response) => response.json())
             .then((json) => console.log(json));
+            statusMessage.innerHTML = '<p class="successbig">Bid successful! Updating..</p>';
+            makeBidButton.style.display = "none";
+            yourOwnListing.style.display = "none";
             let emailUpdate = localStorage.getItem("email");
             let passwordUpdate = localStorage.getItem("password");
             console.log(emailUpdate, passwordUpdate);

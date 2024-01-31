@@ -109,7 +109,7 @@ async function loadListingsUnregistered(url, method = 'GET') {
           } else {
             var picture = jsonListings[i].media[0];
           }
-          listings.insertAdjacentHTML("beforeend", `<div class="post col-3"><img onerror="this.src='/img/error.png' " src="${picture}"><p>${title}</p><p>${description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`);
+          listings.insertAdjacentHTML("beforeend", `<div class="post col-md-3"><img onerror="this.src='/img/error.png' " src="${picture}"><p>${title}</p><p>${description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`);
           
         }
     } catch(error){

@@ -113,16 +113,63 @@ form {
   color: white;
   border-radius: 10px;
   width: 150px;
-  border: 0;
+  border: solid 2px transparent;
 }
 
 #standardbutton:hover, .goback:hover, .view_more_button:hover, .viewmore:hover {
   background-color: $background-color;
   color: $font-color;
+  border: solid 2px;
 }
 
 .goback {
-  margin: 0px 0px 0px 20px;
+  margin: 0px 0px 20px 20px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.makebidbutton {
+  display: flex;
+  justify-content: center;
+  background-color: $success-color;
+  font-size: 1.2em;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  max-width: 255px;
+  margin: 20px auto;
+  border: solid 4px transparent;
+}
+
+.makebidbutton:hover {
+  background-color: $background-color;
+  color: $font-color;
+  border: solid 4px;
+}
+
+.successbig {
+  font-size: 1.5em;
+  margin-top: 30px;
+  color: $success-color;
+  font-weight: bolder;
+}
+
+.seller {
+  p {padding: 10px;}
+  img {
+    padding: 10px;
+  }
+  margin: 60px auto;
+  border-radius: 15px;
+  max-width: 150px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 }
 
 .view_more_button {
@@ -133,6 +180,7 @@ form {
   color: white;
   border-radius: 10px;
   max-width: 125px;
+  border: solid 2px transparent;
 }
 
 .logo {
@@ -157,8 +205,7 @@ form {
   height: 365px;
   position: relative;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(15px);
-  border: solid 1px;
+
 }
 
 .post img {
@@ -220,15 +267,23 @@ h1 {
   max-width: 125px;
   min-width: 100px;
   margin: 20px auto;
-  border: 0;
+  border: solid 2px transparent;
 }
 
+
+
 .listingdetails {
-  img {max-width: 500px;}
-  margin: auto;
-  display: block;
-  flex-direction: column;
-  justify-content: center;
+  p {
+    padding: 10px;}
+  img {
+    padding: 10px;
+    max-width: 500px;
+  }
+  margin: 10px auto;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
 }
 
 .sellerimage {
@@ -236,8 +291,11 @@ h1 {
   border-radius: 20%;
 }
 
-.picture_and_specs {
+.spectitle {
   display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
 }
 
 .success {
@@ -250,4 +308,10 @@ h1 {
 
 #title_error, #description_error, #media_error {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .goback {
+    display: none;
+  }
 }
