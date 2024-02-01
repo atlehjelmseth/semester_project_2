@@ -8,6 +8,7 @@ $success-color: green;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
@@ -15,7 +16,7 @@ body {
  flex-direction: column;
  justify-self: center;
  background-color: $background-color;
- font-family: "poppins";
+ font-family: "poppins", sans-serif;
  max-width: 1400px;
  margin: auto!important;
  min-height: calc(100vh - 110px);
@@ -36,7 +37,6 @@ body {
 footer {
   display: flex;
   height: 25px;
-  text-align: center;
   margin: auto;
 }
 
@@ -95,7 +95,6 @@ ul {
 
 .nav-link {
   padding: 20px!important;
-  text-align: center;
 }
 
 .nav-link:hover {
@@ -204,7 +203,6 @@ ul {
   display: flex;
   flex-direction: column;
   margin: auto;
-  text-align: center;
 }
 
 .success {
@@ -225,6 +223,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 350px;
   p {
     text-align: center;
   }
@@ -240,7 +239,7 @@ form {
     margin: auto;
   }
   input {
-    min-width: 340px;
+    max-width: 100%;
     border-radius: 10px;
     border: 0;
     margin-bottom: 30px;
