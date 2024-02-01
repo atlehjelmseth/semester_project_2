@@ -306,7 +306,7 @@ form input {
 .seller {
   margin: 60px auto;
   border-radius: 15px;
-  max-width: 150px;
+  max-width: 255px;
   position: relative;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 }
