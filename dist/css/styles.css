@@ -12,7 +12,7 @@ body {
   font-family: "poppins";
   max-width: 1400px;
   margin: auto !important;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 110px);
 }
 body input {
   width: 100%;
@@ -20,7 +20,11 @@ body input {
 body .content {
   background-color: #f7f7f7;
   margin-top: 75px !important;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 110px);
+}
+
+footer {
+  height: 25px;
 }
 
 img {
@@ -61,6 +65,8 @@ form p {
 }
 form .failure {
   text-align: center;
+  margin-top: -25px;
+  margin-bottom: 30px;
 }
 form ::placeholder {
   margin-right: 20px;
@@ -87,7 +93,7 @@ form input {
   min-height: 200px;
 }
 
-#standardbutton, .goback {
+#standardbutton, .standardbutton, .goback {
   background-color: blue;
   text-decoration: none;
   font-size: 0.8em;
@@ -321,6 +327,15 @@ ul {
   margin: 0 !important;
 }
 
+.nav-item {
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: black;
+}
+
 .nav_bar {
   display: flex;
   min-height: 70px;
@@ -340,12 +355,12 @@ ul {
 }
 
 .nav-link {
-  transition: 0.7s ease;
+  padding: 20px !important;
+  text-align: center;
 }
 
 .nav-link:hover {
-  background-color: green;
-  color: red;
+  background-color: #f7f7f7;
 }
 
 .bar {
@@ -370,12 +385,14 @@ ul {
   }
   .hamburger.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
+    transition: 0.3s;
   }
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
   }
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+    transition: 0.3s;
   }
   .nav-menu {
     position: fixed;

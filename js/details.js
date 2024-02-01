@@ -22,17 +22,44 @@ const specs = listingsUrl + "/" + id + "?_seller=true&_bids=true";
 const listingsBid = listingsUrl + "/" + id + "/bids"
 
 
+/* Bring up all the details on the listing */
 
 async function listingSpecs() {
   try {const response = await fetch(specs);
        const resultsSpec = await response.json();
        console.log(resultsSpec);
-       const title = resultsSpec.title;
-       const picture = resultsSpec.media[0];
-       const description = resultsSpec.description;
+
        const sellerName = resultsSpec.seller.name;
        const sellerEmail = resultsSpec.seller.email;
        const sellerAvatar = resultsSpec.seller.avatar;
+      
+       if (resultsSpec.title === "") {
+        var title  = "No title";
+      } else {
+        var title  = resultsSpec.title;
+      }
+      if (resultsSpec.description === "" || resultsSpec.description === null) {
+        var description  = "No description";
+      } else {
+        var description  = resultsSpec.description;
+      }
+      if (resultsSpec.media[0] === undefined) {
+        var picture = "/img/error.png";
+      } else {
+        var picture = resultsSpec.media[0];
+      }
+       
+
+       let largest = 0;
+       for(let i = 0; i < resultsSpec.bids.length; i++) {
+        if (resultsSpec.bids[i].amount > largest) {
+          largest = resultsSpec.bids[i].amount;
+          largestName = resultsSpec.bids[i].bidderName;
+        }
+      }
+      console.log(largest);
+      console.log(largestName)
+
 
        if (resultsSpec._count.bids === 0) {
         let currentBid = 0;
@@ -56,9 +83,11 @@ async function listingSpecs() {
         yourOwnListing.innerHTML += `<p>There are no current bids. Be the first!</p>`;
         biddingHistory.innerHTML = "";
        } else {
-        let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
-        let currentBiggestBid = lastElement.amount;
-        let currestBiggestName = lastElement.bidderName;
+
+        let currentBiggestBid = largest;
+        let currestBiggestName = largestName;
+        console.log(currentBiggestBid)
+        console.log(picture)
         var t = document.createTextNode(`BID ${currentBiggestBid+10}`);
         makeBidButton.appendChild(t);
         listingDetails.innerHTML = "";
@@ -69,7 +98,7 @@ async function listingSpecs() {
                                         </div>
                                         <div>
                                           <p class="description">Description: ${description}</p>
-                                          <p>Bid-leader is ${currestBiggestName} with a bid of ${currentBiggestBid}</p>
+                                          <p>${currestBiggestName} has the largest bid of ${currentBiggestBid}</p>
                                         </div>
                                       </div>
  
@@ -77,8 +106,6 @@ async function listingSpecs() {
         bidStatus.innerHTML = `<p>${currestBiggestName}'s bid for this item is:</p> <p class="bidnumber">${currentBiggestBid}</p>`;
         for(let i = 0; i < resultsSpec.bids.length; i++) {
           console.log(resultsSpec.bids[i].amount)
-          let lastElementBidder = resultsSpec.bids[resultsSpec.bids.length - 1];
-          let currentBiggestBidBidder = lastElementBidder.bidderName;
           let currentBid = resultsSpec.bids[i].amount;
           let bidderName = resultsSpec.bids[i].bidderName;
           let bidDate = resultsSpec.bids[i].created.slice(0, 10);
@@ -86,7 +113,7 @@ async function listingSpecs() {
           <p>${bidDate}: ${bidderName} made a bid of: ${currentBid}</p>
           `
 
-          if (currentBiggestBidBidder === localName) {
+          if (largestName === localName) {
             makeBidButton.style.display = "none"
             console.log("you have the largest bid");
             bidStatus.innerHTML = `<p class="successbig">Happy days! You have the largest bid!</p>`
@@ -136,11 +163,20 @@ function makeBid(listingsBid) {
     gettingBid()
 
     
+    
 
     async function gettingBid() {
       try {const response = await fetch(specs);
            const resultsSpec = await response.json();
            console.log(resultsSpec);
+
+           let largest = 0;
+           for(let i = 0; i < resultsSpec.bids.length; i++) {
+            if (resultsSpec.bids[i].amount > largest) {
+              largest = resultsSpec.bids[i].amount;
+            }
+
+          }
 
            if (resultsSpec._count.bids === 0) {
             
@@ -187,8 +223,9 @@ function makeBid(listingsBid) {
               location.reload()
               } ,500);
           } else {
-            let lastElement = resultsSpec.bids[resultsSpec.bids.length - 1];
-            let currentBiggestBid = lastElement.amount+10;
+
+            
+            let currentBiggestBid = largest+10;
             console.log(currentBiggestBid)
             if (localCredit < currentBiggestBid) {
               console.log("Not enough credit");
@@ -246,3 +283,4 @@ function makeBid(listingsBid) {
 }
 
 makeBid(listingsBid)
+

@@ -18,16 +18,20 @@ body {
  font-family: "poppins";
  max-width: 1400px;
  margin: auto!important;
- min-height: calc(100vh - 80px);
+ min-height: calc(100vh - 110px);
   input {
     width: 100%;
   }
   .content {
     background-color: $background-color;
     margin-top: 75px!important;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 110px);
   }
 
+}
+
+footer {
+  height: 25px;
 }
 
 img {
@@ -43,28 +47,6 @@ header {
   max-width: 1400px;
   width: 100%;
 }
-
-// header {
-//   max-height: 100px;
-//   max-width: 1400px;
-//   justify-content: space-between;
-//   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-//   backdrop-filter: blur(15px);
-//   border-bottom: solid 1px;
-//   position: fixed;
-//   top: 0;
-//   width: 100%;
-//   z-index: 1;
-//   a {
-//     text-decoration: none;
-//     text-transform: uppercase;
-//     font-weight: bold;
-//     font-size: 0.8em;
-//     color: black;
-//     margin: auto 20px
-//   }
-// }
-
 
 
 .search {
@@ -91,8 +73,9 @@ form {
     text-align: center;
   }
   .failure {
-
     text-align: center;
+    margin-top: -25px;
+    margin-bottom: 30px;
   }
   ::placeholder {
     margin-right: 20px;
@@ -120,7 +103,7 @@ form {
   min-height: 200px;
 }
 
-#standardbutton, .goback {
+#standardbutton, .standardbutton, .goback {
   background-color: $link-background-color;
   text-decoration: none;
   font-size: 0.8em;
@@ -357,6 +340,14 @@ ul {
   margin: 0!important;
 }
 
+.nav-item {
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: black;
+}
 .nav_bar {
   display: flex;
   min-height: 70px;
@@ -377,12 +368,13 @@ ul {
 }
 
 .nav-link {
-  transition: 0.7s ease;
+  padding: 20px!important;
+  text-align: center;
+  
 }
 
 .nav-link:hover {
-  background-color: green;
-  color: red;
+  background-color:$background-color;
 }
 
 .bar {
@@ -410,12 +402,14 @@ ul {
 
   .hamburger.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
+    transition: 0.3s;
   }
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
   }
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+    transition: 0.3s;
   }
 
   .nav-menu {
