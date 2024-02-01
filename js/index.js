@@ -68,7 +68,7 @@ async function loadListingsWithToken (url) {
         } else {
           var picture = jsonListings[i].media[0];
         }
-        listings.insertAdjacentHTML("beforeend", `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${picture}"><p>${title}</p><p>${description}</p><p class="currentbid">Number of bids: ${currentBidButton}</p><a href="details.html?id=${listingId}" class="view_more_button">View More</a></div>`);
+        listings.insertAdjacentHTML("beforeend", `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${picture}" alt="Picture of ${title}"><p>${title}</p><p>${description}</p><p class="currentbid">Number of bids: ${currentBidButton}</p><a href="details.html?id=${listingId}" class="view_more_button">View More</a></div>`);
       }
 
   } catch(error){
@@ -107,7 +107,7 @@ async function loadListingsUnregistered(url, method = 'GET') {
           } else {
             var picture = jsonListings[i].media[0];
           }
-          listings.insertAdjacentHTML("beforeend", `<div class="post col-md-3"><img onerror="this.src='/img/error.png' " src="${picture}"><p>${title}</p><p>${description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`);
+          listings.insertAdjacentHTML("beforeend", `<div class="post col-md-3"><img onerror="this.src='/img/error.png' " src="${picture}" alt="Picture of ${title}"><p>${title}</p><p>${description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`);
           
         }
     } catch(error){
@@ -163,7 +163,7 @@ search.onkeyup = async function (event) {
         var picture = searchResults[i].media[0];
       }
 
-      listings.innerHTML += `<div class="post col-3"><img onerror="this.src='/img/error.png' " src="${picture}"><p>${title}</p><p>${description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`
+      listings.innerHTML += `<div class="post col-3"><img onerror="this.src='/img/error.png' " src="${picture}" alt="Picture of ${title}"><p>${title}</p><p>${description}</p><a href="/login.html" class="view_more_button">Log in to view</a>`
     }
 
     }catch{
@@ -211,7 +211,7 @@ search.onkeyup = async function (event) {
       } else {
         var picture = searchResults[i].media[0];
       }
-      listings.innerHTML += `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${picture}"><p>${title}</p><p>${description}</p><p class="currentbid">Number of bids: ${searchResults[i]._count.bids}</p><a href="details.html?id=${searchResults[i].id}" class="view_more_button">View More</a></div>`
+      listings.innerHTML += `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${picture}" alt="Picture of ${title}"><p>${title}</p><p>${description}</p><p class="currentbid">Number of bids: ${searchResults[i]._count.bids}</p><a href="details.html?id=${searchResults[i].id}" class="view_more_button">View More</a></div>`
     }
     console.log(searchValue.length)
   

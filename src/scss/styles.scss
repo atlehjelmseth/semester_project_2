@@ -26,12 +26,18 @@ body {
     background-color: $background-color;
     margin-top: 75px!important;
     min-height: calc(100vh - 110px);
+    p {
+      padding: 10px;
+    }
   }
 
 }
 
 footer {
+  display: flex;
   height: 25px;
+  text-align: center;
+  margin: auto;
 }
 
 img {
@@ -49,21 +55,171 @@ header {
 }
 
 
-.search {
-  min-height: 30px;
+/* Navbar - Hamburger Menu */
 
-  width: 100%;
-  max-width: 1400px;
-  z-index: 1;
-  backdrop-filter: blur(15px);
-  
+li {
+  list-style: none;
 }
 
-#searchbar {
-  max-width: 200px; 
+ul {
+  margin: 0!important;
+}
+
+.nav-item {
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: black;
+}
+.nav_bar {
   display: flex;
-  margin: 20px auto;
+  min-height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  width: 100%!important;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 }
+
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  z-index: 2;
+  border-bottom: 0;
+}
+
+.nav-link {
+  padding: 20px!important;
+  text-align: center;
+}
+
+.nav-link:hover {
+  background-color:$background-color;
+}
+
+.bar {
+  display: none;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: black;
+}
+
+.profile_link, .create_listing {
+  margin-right: 100px;
+}
+
+/* Buttons */
+
+#standardbutton, .standardbutton, .goback {
+  background-color: $link-background-color;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: "poppins";
+  text-align: center;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  border: solid 2px transparent;
+  margin-bottom: 20px;
+}
+
+
+.standardbutton:hover, #standardbutton:hover, .goback:hover, .view_more_button:hover, .viewmore:hover {
+  background-color: $background-color;
+  color: $font-color;
+  border: solid 2px;
+}
+
+.goback {
+  margin: 0px 0px 20px 20px;
+}
+
+.makebidbutton {
+  display: flex;
+  justify-content: center;
+  background-color: $success-color;
+  font-size: 1.8em;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  max-width: 255px;
+  margin: 0px auto 20px auto;
+  border: solid 4px transparent;
+}
+
+.makebidbutton:hover {
+  background-color: $background-color;
+  color: $font-color;
+  border: solid 4px;
+}
+
+.viewmore {
+  display: flex;
+  font-size: 0.8em;
+  justify-content: center;
+  background-color: $link-background-color;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  max-width: 125px;
+  min-width: 100px;
+  margin: 20px auto;
+  border: solid 2px transparent;
+}
+
+.view_more_button {
+  display: flex;
+  justify-content: center;
+  background-color: $link-background-color;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  max-width: 125px;
+  border: solid 2px transparent;
+}
+
+
+/* Globals */
+
+.center {
+  align-items: center;
+  margin: auto;
+}
+
+.error {
+  color: $headline-color;
+  font-size: 1.2rem;
+}
+
+.spectitle {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+}
+
+.success {
+  color: $success-color;
+}
+
+.failure {
+  color: $headline-color;
+} 
+
+#title_error, #description_error, #media_error {
+  display: none;
+}
+
+/* Forms */
 
 form {
   display: flex;
@@ -103,28 +259,29 @@ form {
   min-height: 200px;
 }
 
-#standardbutton, .standardbutton, .goback {
-  background-color: $link-background-color;
-  text-decoration: none;
-  font-size: 0.8em;
-  font-family: "poppins";
-  text-align: center;
-  padding: 10px;
-  color: white;
-  border-radius: 10px;
-  width: 150px;
-  border: solid 2px transparent;
+
+/* Main page */
+
+.search {
+  min-height: 30px;
+  width: 100%;
+  max-width: 1400px;
+  backdrop-filter: blur(15px);
 }
 
-#standardbutton:hover, .goback:hover, .view_more_button:hover, .viewmore:hover {
-  background-color: $background-color;
-  color: $font-color;
-  border: solid 2px;
+#searchbar {
+  max-width: 200px; 
+  display: flex;
+  margin: 20px auto;
 }
 
-.goback {
-  margin: 0px 0px 20px 20px;
+.landing-picture {
+  height: 480px;
+  background: url("/img/logobig.png");
 }
+
+
+/* Details */
 
 .details {
   display: flex;
@@ -132,26 +289,11 @@ form {
   text-align: center;
 }
 
-.makebidbutton {
-  display: flex;
-  justify-content: center;
-  background-color: $success-color;
-  font-size: 1.8em;
-  font-weight: bolder;
-  text-decoration: none;
-  padding: 20px;
-  color: white;
-  border-radius: 10px;
-  max-width: 255px;
-  margin: 0px auto 20px auto;
-  border: solid 4px transparent;
+.logobig {
+  max-width: 500px;
+  margin: auto;
 }
 
-.makebidbutton:hover {
-  background-color: $background-color;
-  color: $font-color;
-  border: solid 4px;
-}
 
 .bidstatus {
   margin-top: 30px;
@@ -182,17 +324,6 @@ form {
   max-width: 150px;
   position: relative;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-}
-
-.view_more_button {
-  display: flex;
-  justify-content: center;
-  background-color: $link-background-color;
-  padding: 10px;
-  color: white;
-  border-radius: 10px;
-  max-width: 125px;
-  border: solid 2px transparent;
 }
 
 .logo {
@@ -247,9 +378,6 @@ form {
   padding: 0 10px;
 }
 
-h1 {
-    text-align: center;
-}
 
 .currentbid {
   position: absolute;
@@ -257,32 +385,6 @@ h1 {
   right: 0;
   bottom: 60px;
 }
-
-.center {
-  align-items: center;
-  margin: auto;
-}
-
-.error {
-  color: $headline-color;
-  font-size: 1.2rem;
-}
-
-.viewmore {
-  display: flex;
-  font-size: 0.8em;
-  justify-content: center;
-  background-color: $link-background-color;
-  padding: 10px;
-  color: white;
-  border-radius: 10px;
-  max-width: 125px;
-  min-width: 100px;
-  margin: 20px auto;
-  border: solid 2px transparent;
-}
-
-
 
 .listingdetails {
   p {
@@ -304,95 +406,17 @@ h1 {
   border-radius: 20%;
 }
 
-.spectitle {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  text-align: center;
-}
-
-.success {
-  color: $success-color;
-}
-
-.failure {
-  color: $headline-color;
-} 
-
-#title_error, #description_error, #media_error {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .goback {
-    display: none;
-  }
-}
-
-
-/* Navbar - Hamburger Menu */
-
-li {
-  list-style: none;
-}
-
-ul {
-  margin: 0!important;
-}
-
-.nav-item {
-  color: green;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8em;
-  color: black;
-}
-.nav_bar {
-  display: flex;
-  min-height: 70px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-  width: 100%!important;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-}
-
-
-.nav-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  z-index: 2;
-}
-
-.nav-link {
-  padding: 20px!important;
-  text-align: center;
-  
-}
-
-.nav-link:hover {
-  background-color:$background-color;
-}
-
-.bar {
-  display: none;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: black;
-}
-
-.profile_link, .create_listing {
-  margin-right: 100px;
-}
-
+/* Media queries */
 
 @media(max-width: 767px) {
   .bar {
     display: block;
+  }
+
+  .landing-picture {
+    height: 250px;
+    background: url("/img/logobig.png");
+    background-size: cover;
   }
 
   .hamburger {
@@ -420,6 +444,7 @@ ul {
     width: 100%;
     text-align: center;
     transition: 0.3s;
+    border-bottom: solid 1px;
     a {
       align-items: center;
     }
@@ -433,5 +458,10 @@ ul {
 
   .profile_link, .create_listing {
     margin-right: 0px;
-}
+  }
+
+  .goback {
+    display: none;
+  }
+
 }

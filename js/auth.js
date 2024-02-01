@@ -4,6 +4,7 @@ const viewMoreHidden = document.querySelector(".viewmore");
 const profileLink = document.querySelector(".profile_link");
 const createListing = document.querySelector(".create_listing");
 
+/* Checks if user is logged in */
 function userName () {
   if (localStorage.name === undefined) {
     profileLink.style.display = "none";
@@ -16,6 +17,7 @@ function userName () {
 }
 
 userName()
+
 
 logoutButton.onclick = function (ev) {
   localStorage.clear(ev);

@@ -13,6 +13,7 @@ const avatarUrl = `${api_base_url}/api/v1/auction/profiles/${localName}/media`;
 
 console.log(userEmail, userPassword);
 
+/* Login user */
 
 async function loginUser(url) {
   try {
@@ -39,7 +40,7 @@ async function loginUser(url) {
     profileInfo.innerHTML = "";
     profileInfo.innerHTML += `
       <div class="spectitle">
-      <img onerror="this.src='/img/error.png' "src="${avatar}">
+      <img onerror="this.src='/img/error.png' "src="${avatar}" alt="Picture of ${name}">
       <div>
       <p>Name: ${name}</p>
       <p>Email: ${email}</p>
@@ -53,7 +54,7 @@ async function loginUser(url) {
 }
 loginUser(loginUrl);
 
-
+/* Create user */
 
 async function createUser(url, userData) {
   try {
@@ -84,6 +85,8 @@ async function createUser(url, userData) {
   }
 
 }
+
+/* When button is clicked */
 
 update.onclick = function (ev) {
   ev.preventDefault()
