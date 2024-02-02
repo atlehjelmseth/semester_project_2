@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAIN</title>
+  <link rel="stylesheet" href="dist/css/styles.css" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class="nav_bar">
+      <a href="#"><img src="/img/logo.png" class="logo" alt="Logo"></a>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="/profile.html" class="nav-link profile_link">PROFILE</a>
+        </li>
+        <li class="nav-item">
+          <a href="/makelisting.html" class="nav-link create_listing">CREATE LISTING</a>
+        </li>
+        <li class="nav-item">
+          <a href="" id="standardbutton" class="logoutbutton">Log out</a>
+        </li>
+        <li class="nav-item"> <a href="/login.html" id="standardbutton" class="loginbutton">Log in</a></li>
+      </ul>
+
+    </nav>
+    <!-- <a href="index.html">
+      <img src="/img/logo.png" class="logo" alt="Logo">
+    </a>
+    <div>
+      <a href="/profile.html" class="profile_link">Profile</a>
+      <a href="/makelisting.html" class="create_listing">Create listing</a>
+    </div>
+    <a href="" id="standardbutton" class="logoutbutton">Log out</a>
+    <a href="/login.html" id="standardbutton" class="loginbutton">Log in</a> -->
+  </header>
+  <div class="content">
+    <div class="search"> <input id="searchbar" class="search" placeholder="Find a listing"></div>
+    <div class="login_out_button"></div>
+    <h1 class="username"></h1>
+    <div class="container">
+      <div class="listings row"></div>
+    </div>
+    <div class="buttoncontainer">
+      <button class="viewmore">More listings</button>
+    </div>
+  </div>
+  <script src="/js/auth.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/hamburger.js"></script>
+</body>
+
+</html>

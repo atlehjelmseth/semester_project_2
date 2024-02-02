@@ -1,0 +1,480 @@
+$background-color : #f7f7f7;
+$font-color: black;
+$headline-color : red;
+$link-background-color: blue;
+$success-color: green;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+ display: flex;
+ flex-direction: column;
+ justify-self: center;
+ background-color: $background-color;
+ font-family: "poppins", sans-serif;
+ max-width: 1400px;
+ margin: auto!important;
+ min-height: calc(100vh - 110px);
+  input {
+    width: 100%;
+  }
+  .content {
+    background-color: $background-color;
+    margin-top: 75px!important;
+    min-height: calc(100vh - 110px);
+    p {
+      padding: 10px;
+    }
+  }
+
+}
+
+footer {
+  display: flex;
+  height: 25px;
+  margin: auto;
+}
+
+img {
+width: 100%;
+border-radius: 15px;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  z-index: 1;
+  background-color: white;
+  max-width: 1400px;
+  width: 100%;
+}
+
+
+/* Navbar - Hamburger Menu */
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0!important;
+}
+
+nav a {
+  text-decoration: none;
+  color: $font-color;
+}
+
+.nav-item {
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: black;
+}
+.nav_bar {
+  display: flex;
+  min-height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  width: 100%!important;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  z-index: 2;
+  border-bottom: 0;
+}
+
+.nav-link {
+  padding: 20px!important;
+}
+
+.nav-link:hover {
+  background-color:$background-color;
+}
+
+.bar {
+  display: none;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: black;
+}
+
+.profile_link, .create_listing {
+  margin-right: 100px;
+}
+
+/* Buttons */
+
+.logoutbutton, .loginbutton, .standardbutton, .goback {
+  background-color: $link-background-color;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: "poppins";
+  text-align: center;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  border: solid 2px transparent;
+  margin-bottom: 20px;
+}
+
+
+.standardbutton:hover, .goback:hover, .view_more_button:hover, .viewmore:hover, .loginbutton:hover, .logoutbutton:hover {
+  background-color: $background-color;
+  color: $font-color;
+  border: solid 2px;
+}
+
+.goback {
+  margin: 0px 0px 20px 20px;
+}
+
+.left {
+  display: flex;
+}
+
+.makebidbutton {
+  display: flex;
+  justify-content: center;
+  background-color: $success-color;
+  font-size: 1.8em;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  max-width: 255px;
+  margin: 0px auto 20px auto;
+  border: solid 4px transparent;
+}
+
+.makebidbutton:hover {
+  background-color: $background-color;
+  color: $font-color;
+  border: solid 4px;
+}
+
+.viewmore {
+  display: flex;
+  font-size: 0.8em;
+  justify-content: center;
+  background-color: $link-background-color;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  max-width: 125px;
+  min-width: 100px;
+  margin: 20px auto;
+  border: solid 2px transparent;
+}
+
+.view_more_button {
+  display: flex;
+  justify-content: center;
+  background-color: $link-background-color;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  max-width: 125px;
+  border: solid 2px transparent;
+}
+
+
+/* Globals */
+
+.center {
+  align-items: center;
+  margin: auto;
+}
+
+.error {
+  color: $headline-color;
+  font-size: 1.2rem;
+}
+
+.spectitle {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.success {
+  color: $success-color;
+}
+
+.failure {
+  color: $headline-color;
+} 
+
+#title_error, #description_error, #media_error {
+  display: none;
+}
+
+/* Forms */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  p {
+    text-align: center;
+  }
+  .failure {
+    text-align: center;
+    margin-top: -25px;
+    margin-bottom: 30px;
+  }
+  ::placeholder {
+    margin-right: 20px;
+  }
+  button text{
+    margin: auto;
+  }
+  input {
+    min-width: 300px;
+    width: 100%;
+    border-radius: 10px;
+    border: 0;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+  }
+}
+
+#dateEnd {
+  width: 200px;
+}
+
+#description {
+  min-width: 340px;
+  border-radius: 10px;
+  border: 0;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  min-height: 200px;
+}
+
+
+/* Main page */
+
+.search {
+  min-height: 30px;
+  width: 100%;
+  max-width: 1400px;
+  backdrop-filter: blur(15px);
+}
+
+#searchbar {
+  max-width: 200px; 
+  display: flex;
+  margin: 20px auto;
+}
+
+.landing-picture {
+  height: 480px;
+  background: url("/img/logobig.png");
+}
+
+
+/* Details */
+
+.details {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.logobig {
+  max-width: 500px;
+  margin: auto;
+}
+
+
+.bidstatus {
+  margin-top: 30px;
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+.bidnumber {
+  font-size: 1.5em;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.successbig {
+  font-size: 1.5em;
+  margin-top: 30px;
+  color: $success-color;
+  font-weight: bolder;
+}
+
+.seller {
+  p {padding: 10px;}
+  img {
+    padding: 10px;
+  }
+  margin: 60px auto;
+  border-radius: 15px;
+  max-width: 255px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  max-width: 150px;
+  max-height: 80px;
+  margin: 20px;
+}
+
+.usercredit {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.listings {
+  display: flex;
+  justify-content: center;
+}
+
+.post {
+  margin: 10px;
+  border-radius: 15px;
+  height: 365px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+
+}
+
+.post img {
+  overflow: hidden;
+  object-fit: contain;
+  max-height: 165px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.post a {
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.8em;
+  margin: 20px auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: "poppins";
+}
+
+.post p {
+  max-height: 30px;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 10px;
+}
+
+
+.currentbid {
+  position: absolute;
+  left: 0%;
+  right: 0;
+  bottom: 60px;
+}
+
+.listingdetails {
+  p {
+    padding: 10px;}
+  img {
+    padding: 10px;
+    max-width: 500px;
+  }
+  margin: 10px auto;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  max-width: 600px;
+}
+
+.sellerimage {
+  max-width: 100px;
+  border-radius: 20%;
+}
+
+/* Media queries */
+
+@media(max-width: 767px) {
+  .bar {
+    display: block;
+  }
+
+  .landing-picture {
+    height: 250px;
+    background: url("/img/logobig.png");
+    background-size: cover;
+  }
+
+  .hamburger {
+    position: relative;
+    right: 20px;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    transition: 0.3s;
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    transition: 0.3s;
+  }
+
+  .nav-menu {
+    position: fixed;
+    right: -100%;
+    top: 75px;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    border-bottom: solid 1px;
+    a {
+      align-items: center;
+    }
+  }
+  .nav-item {
+    margin: 20px 0;
+  }
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .profile_link, .create_listing {
+    margin-right: 0px;
+  }
+
+  .goback {
+    display: none;
+  }
+
+}
