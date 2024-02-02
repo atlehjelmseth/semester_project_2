@@ -23,7 +23,6 @@ async function loginUser(url, userData) {
     const avatar = json.avatar;
     const credits = json.credits;
     const status = response.status;
-    console.log(json)
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('email', userEmail);
     localStorage.setItem('name', userName);

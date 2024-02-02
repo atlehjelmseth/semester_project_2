@@ -10,15 +10,13 @@ const localName = localStorage.getItem('name');
 const localCredit = localStorage.getItem('credits')
 const token = localStorage.getItem('accessToken');
 
+/* This makes the deadlinedate automatically start on tomorrows date */
+
 var today = new Date();
 var todayFormatted = new Date().toISOString().split('T')[0];
-console.log(todayFormatted);
-
 var tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
-
 var tomorrowFormatted = tomorrow.toISOString().split('T')[0];
-console.log(tomorrowFormatted)
 
 function makeDate() {
   const makeDateInput = document.createElement("input");
@@ -30,6 +28,8 @@ function makeDate() {
 }
 
 makeDate()
+
+/* This creates the user */
 
 async function createUser(url, userData) {
   statusHtml.innerHTML = '';
@@ -69,9 +69,7 @@ async function createUser(url, userData) {
 
 }
 
-
-
-
+/* This start the button-onclick, and checks that all the parameters is correct */
 
 create.onclick = function (ev) {
   ev.preventDefault()

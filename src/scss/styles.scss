@@ -120,7 +120,7 @@ nav a {
 
 /* Buttons */
 
-#standardbutton, .standardbutton, .goback {
+.logoutbutton, .loginbutton, .standardbutton, .goback {
   background-color: $link-background-color;
   text-decoration: none;
   font-size: 0.8em;
@@ -135,7 +135,7 @@ nav a {
 }
 
 
-.standardbutton:hover, #standardbutton:hover, .goback:hover, .view_more_button:hover, .viewmore:hover {
+.standardbutton:hover, .goback:hover, .view_more_button:hover, .viewmore:hover {
   background-color: $background-color;
   color: $font-color;
   border: solid 2px;

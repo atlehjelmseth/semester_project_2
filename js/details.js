@@ -28,8 +28,6 @@ const listingsBid = listingsUrl + "/" + id + "/bids"
 async function listingSpecs() {
   try {const response = await fetch(specs);
        const resultsSpec = await response.json();
-       console.log(resultsSpec);
-
        const sellerName = resultsSpec.seller.name;
        const sellerEmail = resultsSpec.seller.email;
        const sellerAvatar = resultsSpec.seller.avatar;
@@ -56,16 +54,15 @@ async function listingSpecs() {
         let bidderName = "no one";
         var t = document.createTextNode("BID 10");
         makeBidButton.appendChild(t);
-        console.log(currentBid, bidderName);
         listingDetails.innerHTML = "";
 
         listingDetails.innerHTML += `<div class="spectitle">
                                        <div class="picture_and_specs">
                                         <img onerror="this.src='/img/error.png' "src="${picture}" alt="Picture of ${title}"">
-                                        <h1>Title: ${title}</h1>
+                                        <p>Title: ${title}</p>
                                       </div>
                                        <div>
-                                        <p>${description}</p>
+                                       <p class="description">Description: ${description}</p>
                                        </div>
                                     </div>
         `;
@@ -80,13 +77,8 @@ async function listingSpecs() {
            largestName = resultsSpec.bids[i].bidderName;
          }
        }
-       console.log(largest);
-       console.log(largestName)
-
         let currentBiggestBid = largest;
         let currestBiggestName = largestName;
-        console.log(currentBiggestBid)
-        console.log(picture)
         var t = document.createTextNode(`BID ${currentBiggestBid+10}`);
         makeBidButton.appendChild(t);
         listingDetails.innerHTML = "";
@@ -104,7 +96,6 @@ async function listingSpecs() {
         `;
         bidStatus.innerHTML = `<p>${currestBiggestName}'s bid for this item is:</p> <p class="bidnumber">${currentBiggestBid}</p>`;
         for(let i = 0; i < resultsSpec.bids.length; i++) {
-          console.log(resultsSpec.bids[i].amount)
           let currentBid = resultsSpec.bids[i].amount;
           let bidderName = resultsSpec.bids[i].bidderName;
           let bidDate = resultsSpec.bids[i].created.slice(0, 10);
@@ -114,18 +105,14 @@ async function listingSpecs() {
 
           if (largestName === localName) {
             makeBidButton.style.display = "none"
-            console.log("you have the largest bid");
             bidStatus.innerHTML = `<p class="successbig">Happy days! You have the largest bid of ${currentBiggestBid}!</p>`
           }else {
-            console.log("bid away")
+            console.log(error)
           }
         }
        }
 
       if (sellerEmail !== localEmail) {
-        console.log(`Seller is ${sellerName}`)
-        
-
         listingSeller.innerHTML += `<div class="seller">
                                       <p>Seller of this product is ${sellerName}</p>
                                       <img class="sellerimage" onerror="this.src='/img/errorperson.png' "src="${sellerAvatar}" alt="Picture of seller">
@@ -144,7 +131,7 @@ async function listingSpecs() {
       
 
   }catch(error) {
-    console.log("This went to hell")
+    console.log(error)
   }
 }
 
@@ -167,8 +154,6 @@ function makeBid(listingsBid) {
     async function gettingBid() {
       try {const response = await fetch(specs);
            const resultsSpec = await response.json();
-           console.log(resultsSpec);
-
            let largest = 0;
            for(let i = 0; i < resultsSpec.bids.length; i++) {
             if (resultsSpec.bids[i].amount > largest) {
@@ -200,7 +185,6 @@ function makeBid(listingsBid) {
                 .then((json) => console.log(json));
                 let emailUpdate = localStorage.getItem("email");
                 let passwordUpdate = localStorage.getItem("password");
-                console.log(emailUpdate, passwordUpdate);
           
                 fetch(loginUrl, {
                   method: 'POST',
@@ -226,7 +210,6 @@ function makeBid(listingsBid) {
 
             
             let currentBiggestBid = largest+10;
-            console.log(currentBiggestBid)
             if (localCredit < currentBiggestBid) {
               console.log("Not enough credit");
               alert ("Not enough credit");
@@ -254,8 +237,7 @@ function makeBid(listingsBid) {
             yourOwnListing.style.display = "none";
             let emailUpdate = localStorage.getItem("email");
             let passwordUpdate = localStorage.getItem("password");
-            console.log(emailUpdate, passwordUpdate);
-      
+     
             fetch(loginUrl, {
               method: 'POST',
               body: JSON.stringify({
@@ -274,7 +256,7 @@ function makeBid(listingsBid) {
 
           }   
       }catch(error) {
-        console.log("This went to hell")
+        console.log(error)
       }
 
     }

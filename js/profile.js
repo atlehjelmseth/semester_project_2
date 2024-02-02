@@ -11,7 +11,6 @@ const userEmail = localStorage.getItem('email');
 const userPassword = localStorage.getItem('password');
 const avatarUrl = `${api_base_url}/api/v1/auction/profiles/${localName}/media`;
 
-console.log(userEmail, userPassword);
 
 /* Login user */
 
@@ -30,12 +29,10 @@ async function loginUser(url) {
     };
     const response = await fetch(url, postData);
     const json = await response.json();
-    console.log(json);
     const name = json.name;
     const avatar = json.avatar;
     const email = json.email;
     const credit = json.credits;
-    console.log(name)
 
     profileInfo.innerHTML = "";
     profileInfo.innerHTML += `
@@ -68,7 +65,6 @@ async function createUser(url, userData) {
     };
     const response = await fetch(url, postData);
     const json = await response.json();
-    console.log(json);
     if (json.statusCode === 400) {
       statusUpdate.innerHTML = "";
       statusUpdate.innerHTML += `<p class="failure">${json.errors[0].message}</p>`
@@ -76,7 +72,6 @@ async function createUser(url, userData) {
       statusUpdate.innerHTML = "";
       statusUpdate.innerHTML += `<p class="success">Update successful. Updating...</p>`
       form.style.display = "none";
-      console.log("success");
     setTimeout(()=> {
       location.reload()
    } ,3000);}

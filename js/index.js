@@ -15,7 +15,6 @@ const userToLogin = {
   password: localStorage.getItem('password'),
   }
 
-  console.log(userToLogin, token);
 
 function authOrNot () {
   if (localStorage.name === undefined) {
@@ -47,12 +46,11 @@ async function loadListingsWithToken (url) {
     };
     const response = await fetch(url, fetchListings);
     const jsonListings = await response.json();
-    console.log(jsonListings)
 
       for(let i = 0; i < jsonListings.length; i++) {
         var listingId = jsonListings[i].id;
         var currentBidButton = jsonListings[i]._count.bids;
-        console.log(description);   
+
         if (jsonListings[i].title === "") {
           var title  = "No title";
         } else {
@@ -88,7 +86,6 @@ async function loadListingsUnregistered(url, method = 'GET') {
       };
       const response = await fetch(url, listingsUnreg);
       const jsonListings = await response.json();
-      console.log(jsonListings)
 
   
         for(let i = 0; i < jsonListings.length; i++) {
@@ -132,7 +129,6 @@ search.onkeyup = async function (event) {
       };
       const response = await fetch(searchUrl, searchListings);
       const jsonListings = await response.json();
-      console.log(jsonListings)
       const searchValue = event.target.value.toLowerCase();
   
       const searchResults = jsonListings.filter(function (search) {
@@ -141,7 +137,6 @@ search.onkeyup = async function (event) {
         }  
       });
   
-    console.log(searchResults);
     listings.innerHTML = "";
   
     for(let i = 0; i < searchResults.length; i++){
@@ -167,7 +162,7 @@ search.onkeyup = async function (event) {
     }
 
     }catch{
-      console.log("error");
+      console.log(error);
     }
     
   } else {
@@ -181,7 +176,6 @@ search.onkeyup = async function (event) {
       };
       const response = await fetch(searchUrl, searchListings);
       const jsonListings = await response.json();
-      console.log(jsonListings)
       const searchValue = event.target.value.toLowerCase();
   
       const searchResults = jsonListings.filter(function (search) {
@@ -189,8 +183,7 @@ search.onkeyup = async function (event) {
             return true;
         }  
       });
-  
-    console.log(searchResults);
+
     listings.innerHTML = "";
   
     for(let i = 0; i < searchResults.length; i++){
@@ -213,7 +206,6 @@ search.onkeyup = async function (event) {
       }
       listings.innerHTML += `<div class="post col-md-3"><img onerror="this.src='/img/error.png' "src="${picture}" alt="Picture of ${title}"><p>${title}</p><p>${description}</p><p class="currentbid">Number of bids: ${searchResults[i]._count.bids}</p><a href="details.html?id=${searchResults[i].id}" class="view_more_button">View More</a></div>`
     }
-    console.log(searchValue.length)
   
     if (searchValue.length === 0) {
       viewMore.style.display = "flex";
@@ -221,7 +213,7 @@ search.onkeyup = async function (event) {
       viewMore.style.display = "none";
     }
     }catch{
-      console.log("error");
+      console.log(error);
     }
     
   }

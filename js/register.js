@@ -15,7 +15,6 @@ async function registerUser(url, userData) {
     };
     const response = await fetch(url, postData);
     const json = await response.json();
-    console.log(json);
     if (response.status === 201) {
       setTimeout(()=> {
         location.href = "/login.html";

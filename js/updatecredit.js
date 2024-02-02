@@ -4,12 +4,6 @@ let passwordUpdate = localStorage.getItem("password");
 const localNameCredit = localStorage.getItem('name');
 const creditHtml = document.querySelector('.credit');
 const creditUrl = `https://api.noroff.dev/api/v1/auction/auth/login`
-console.log(emailUpdate, passwordUpdate);
-
-
-
-
-
 
 async function creditUser(url) {
   try {
@@ -25,7 +19,6 @@ async function creditUser(url) {
     };
     const response = await fetch(url, postData);
     const json = await response.json();
-    console.log(json)
     const credits = json.credits;
     localStorage.setItem('credits', credits);
     let userCredit = localStorage.getItem('credits');
