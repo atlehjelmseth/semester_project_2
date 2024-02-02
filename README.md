@@ -5,7 +5,7 @@
 - SASS
 
 ## To run project:
-Clone
+Clone, then:
 - npm run dev
 
 ## Online:
