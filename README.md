@@ -1,6 +1,6 @@
 # Semester Project 2
-
-## 
+- HTML
+- JavaScript
 - Bootstrap 5.3.2
 - SASS
 
