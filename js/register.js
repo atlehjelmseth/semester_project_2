@@ -34,7 +34,7 @@ async function registerUser(url, userData) {
       console.log("Registration was a success")
     }
   } catch(error) {
-    console.log(error);
+    console.log("error");
   }
 
 }

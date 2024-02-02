@@ -70,7 +70,7 @@ async function loadListingsWithToken (url) {
       }
 
   } catch(error){
-  console.log(error);
+    console.log("error");
 }
 
 }
@@ -108,7 +108,7 @@ async function loadListingsUnregistered(url, method = 'GET') {
           
         }
     } catch(error){
-    console.log(error);
+      console.log("error");
   }
   }
 
@@ -162,7 +162,7 @@ search.onkeyup = async function (event) {
     }
 
     }catch{
-      console.log(error);
+      console.log("error");
     }
     
   } else {
@@ -213,7 +213,7 @@ search.onkeyup = async function (event) {
       viewMore.style.display = "none";
     }
     }catch{
-      console.log(error);
+      console.log("error");
     }
     
   }

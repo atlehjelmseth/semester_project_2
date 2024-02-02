@@ -25,7 +25,7 @@ async function creditUser(url) {
     creditHtml.innerHTML = ""
     creditHtml.innerHTML += `<p class="usercredit">Hi, ${localNameCredit}. Your credit is: ${userCredit}</p>`;
   } catch (error) {
-    console.log(error);
+    console.log("error");
   } 
 }
 
