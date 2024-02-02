@@ -45,7 +45,7 @@ async function loginUser(url) {
       </div>`
     
   } catch(error) {
-    console.log("error");
+    console.log(error);
   }
 
 }
@@ -76,7 +76,7 @@ async function createUser(url, userData) {
       location.reload()
    } ,3000);}
   } catch(error) {
-    console.log("error");
+    console.log(error);
   }
 
 }

@@ -131,7 +131,7 @@ async function listingSpecs() {
       
 
   }catch(error) {
-    console.log("error");
+    console.log(error);
   }
 }
 
@@ -256,7 +256,7 @@ function makeBid(listingsBid) {
 
           }   
       }catch(error) {
-        console.log("error");
+        console.log(error);
       }
 
     }

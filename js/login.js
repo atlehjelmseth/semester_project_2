@@ -36,7 +36,7 @@ async function loginUser(url, userData) {
       wrong.innerHTML += `<p class="error">Wrong email or password, please try again</p>`;
     } return false;
   } catch (error) {
-    console.log("error");
+    console.log(error);
   } 
 }
 
