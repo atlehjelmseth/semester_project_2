@@ -23,7 +23,8 @@ function makeDate() {
   makeDateInput.setAttribute("type", "date");
   makeDateInput.setAttribute("id", "dateEnd");
   makeDateInput.setAttribute("value", tomorrowFormatted);
-  makeDateInput.setAttribute("min", tomorrowFormatted)
+  makeDateInput.setAttribute("min", tomorrowFormatted);
+  makeDateInput.setAttribute("type", "date");
   deadLineHtml.appendChild(makeDateInput, deadLineHtml);
 }
 
