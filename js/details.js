@@ -107,7 +107,7 @@ async function listingSpecs() {
             makeBidButton.style.display = "none"
             bidStatus.innerHTML = `<p class="successbig">Happy days! You have the largest bid of ${currentBiggestBid}!</p>`
           }else {
-            console.log("error");
+            console.log("Make a bid");
           }
         }
        }

@@ -46,17 +46,18 @@ async function loadListingsWithToken (url) {
     };
     const response = await fetch(url, fetchListings);
     const jsonListings = await response.json();
+    console.log(jsonListings)
 
       for(let i = 0; i < jsonListings.length; i++) {
         var listingId = jsonListings[i].id;
         var currentBidButton = jsonListings[i]._count.bids;
 
-        if (jsonListings[i].title === "") {
+        if (jsonListings[i].title === "" || jsonListings[i].title === null) {
           var title  = "No title";
         } else {
           var title  = jsonListings[i].title;
         }
-        if (jsonListings[i].description === "") {
+        if (jsonListings[i].description === "" || jsonListings[i].description === null) {
           var description  = "No description";
         } else {
           var description  = jsonListings[i].description;
