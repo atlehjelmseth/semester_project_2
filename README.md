@@ -67,4 +67,4 @@ Your app is ready to be deployed!
 - https://www.linkedin.com/in/atle-reinfjord-andersen-hjelmseth-42709b30/
 
 ## Online:
-- https://comfy-pasca-9d6673.netlify.app/
+- https://prismatic-froyo-4f103b.netlify.app/
