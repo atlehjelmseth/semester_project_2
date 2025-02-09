@@ -1,6 +1,6 @@
 # BidOnEverything - Semester Project 2
 
-![image](https://github.com/atlehjelmseth/project-exam-2/blob/main/src/holidaze_git.png)
+![image](https://github.com/atlehjelmseth/semester_project_2/blob/main/bidoneverything_git.png)
 
 
 ## Description
