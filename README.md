@@ -31,7 +31,7 @@ A auction-site from a given API called BidOnEverything:
 1. Clone the repo:
 
 ```bash
-git clone git@github.com:atlehjelmseth/project-exam-1-atlehjelmseth.git
+git clone git@github.com:atlehjelmseth/semester_project_2.git
 ```
 
 2. Install the dependencies:
